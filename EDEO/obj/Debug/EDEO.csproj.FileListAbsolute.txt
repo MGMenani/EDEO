@@ -109,8 +109,8 @@ C:\Users\migra\Desktop\Proyecto\EDEO\EDEO\bin\roslyn\vbc.rsp
 C:\Users\migra\Desktop\Proyecto\EDEO\EDEO\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\migra\Desktop\Proyecto\EDEO\EDEO\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\migra\Desktop\Proyecto\EDEO\EDEO\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\migra\Desktop\Proyecto\EDEO\EDEO\obj\Debug\EDEO.csprojAssemblyReference.cache
 C:\Users\migra\Desktop\Proyecto\EDEO\EDEO\obj\Debug\EDEO.csproj.CoreCompileInputs.cache
 C:\Users\migra\Desktop\Proyecto\EDEO\EDEO\obj\Debug\EDEO.csproj.CopyComplete
 C:\Users\migra\Desktop\Proyecto\EDEO\EDEO\obj\Debug\EDEO.dll
 C:\Users\migra\Desktop\Proyecto\EDEO\EDEO\obj\Debug\EDEO.pdb
-C:\Users\migra\Desktop\Proyecto\EDEO\EDEO\obj\Debug\EDEO.csprojAssemblyReference.cache

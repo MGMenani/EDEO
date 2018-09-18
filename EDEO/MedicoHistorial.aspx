@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MedicoPacientes.aspx.cs" Inherits="EDEO.MedicoPacientes" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MedicoHistorial.aspx.cs" Inherits="EDEO.MedicoHistorial" %>
 
 <!DOCTYPE html>
 
@@ -7,7 +7,7 @@
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>Pacientes</title>
+    <title>Historial</title>
     <link href="http://fonts.googleapis.com/css?family=Oswald:400,300" rel="stylesheet" type="text/css" />
     <link href="PrincipalStyle.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="bootstrap.min.css" rel="stylesheet" />
@@ -20,8 +20,8 @@
 			    <ul>
 				    <li><asp:HyperLink runat="server" ID="lnkEstimacion" NavigateUrl="~/MedicoEstimacion.aspx">Estimación</asp:HyperLink></li>
 				    <li><asp:HyperLink runat="server" ID="lnkValidacion" NavigateUrl="~/MedicoValidacion.aspx">Validación</asp:HyperLink></li>
-				    <li><asp:HyperLink runat="server" ID="lnkHistorial" NavigateUrl="~/MedicoHistorial.aspx">Historial</asp:HyperLink></li>
-				    <li class="current_page_item"><asp:HyperLink runat="server" ID="lnkPacientes" NavigateUrl="~/MedicoPacientes.aspx">Pacientes</asp:HyperLink></li>
+				    <li class="current_page_item"><asp:HyperLink runat="server" ID="lnkHistorial" NavigateUrl="~/MedicoHistorial.aspx">Historial</asp:HyperLink></li>
+				    <li><asp:HyperLink runat="server" ID="lnkPacientes" NavigateUrl="~/MedicoPacientes.aspx">Pacientes</asp:HyperLink></li>
 				    <li><asp:HyperLink runat="server" ID="lnkLogin" NavigateUrl="~/Login.aspx">Salir</asp:HyperLink></li>
 			    </ul>
 		    </div>
@@ -34,7 +34,7 @@
 
         <form id="formPacientes" runat="server">
             <div id="gridView" class="container">
-                <asp:GridView ID="gv_Pacientes" runat="server"
+                <asp:GridView ID="gv_Historial" runat="server"
                               AllowPaging="true" CssClass="table table-striped table-bordered table-hover"
                               OnPageIndexChanging="gv_Pacientes_PageIndexChanging"
                               PageSize="6" >
@@ -45,4 +45,5 @@
 <!-- end #footer -->
 </body>
 </html>
+
 

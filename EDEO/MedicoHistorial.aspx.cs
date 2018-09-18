@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace EDEO
 {
-    public partial class MedicoPacientes : System.Web.UI.Page
+    public partial class MedicoHistorial : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,20 +24,20 @@ namespace EDEO
             DBConnection connection = new DBConnection();
             SqlConnection con = connection.DataBase_Connection();
             con.Open();
-            SqlCommand command = new SqlCommand("EXEC Seleccionar_Expediente", con);
+            SqlCommand command = new SqlCommand("EXEC Seleccionar_Diagnostico", con);
             SqlDataAdapter da = new SqlDataAdapter(command);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            gv_Pacientes.DataSource = dt;
-            gv_Pacientes.DataBind();
+            gv_Historial.DataSource = dt;
+            gv_Historial.DataBind();
             con.Close();
-           
+
         }
 
         protected void gv_Pacientes_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            gv_Pacientes.PageIndex = e.NewPageIndex;
-            gv_Pacientes.DataBind();
+            gv_Historial.PageIndex = e.NewPageIndex;
+            gv_Historial.DataBind();
             BindDataList();
         }
     }

@@ -6,7 +6,7 @@
 }
 
 .cover {
-    background: url("Stock/BlueBackground.jpg");
+    background: url("Stock/Background.png");
     background-repeat: no-repeat;
     background-size: cover;
     width: 100vw;
@@ -84,10 +84,12 @@
     border: 0px;
     color: black;
     text-shadow: black 0px 10px 10px;
-    background-color: rgba(255,255,255,0.57);
+    background-color: rgba(252,251,251,0.80);
 }
 
     .btnstyle:hover {
         background-color: transparent;
-        box-shadow: black 0px 90px 80px;
+        box-shadow: black 0px 70px 60px;
+        background: rgb(128, 128, 128);
     }
+}

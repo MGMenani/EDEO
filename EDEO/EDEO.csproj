@@ -71,6 +71,7 @@
     <Content Include="bootstrap.min.css" />
     <Content Include="Login.aspx" />
     <Content Include="MedicoEstimacion.aspx" />
+    <Content Include="MedicoHistorial.aspx" />
     <Content Include="MedicoPacientes.aspx" />
     <Content Include="MedicoValidacion.aspx" />
     <Content Include="PrincipalStyle.css" />
@@ -98,6 +99,13 @@
     </Compile>
     <Compile Include="MedicoEstimacion.aspx.designer.cs">
       <DependentUpon>MedicoEstimacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MedicoHistorial.aspx.cs">
+      <DependentUpon>MedicoHistorial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MedicoHistorial.aspx.designer.cs">
+      <DependentUpon>MedicoHistorial.aspx</DependentUpon>
     </Compile>
     <Compile Include="MedicoPacientes.aspx.cs">
       <DependentUpon>MedicoPacientes.aspx</DependentUpon>

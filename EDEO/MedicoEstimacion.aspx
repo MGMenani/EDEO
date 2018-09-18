@@ -19,12 +19,14 @@
 			<ul>
 				<li class="current_page_item"><asp:HyperLink runat="server" ID="lnkEstimacion" NavigateUrl="~/MedicoEstimacion.aspx">Estimación</asp:HyperLink></li>
 				<li><asp:HyperLink runat="server" ID="lnkValidacion" NavigateUrl="~/MedicoValidacion.aspx">Validación</asp:HyperLink></li>
-				<li><asp:HyperLink runat="server" ID="lnkHistorial" NavigateUrl="~/Login.aspx">Historial</asp:HyperLink></li>
+				<li><asp:HyperLink runat="server" ID="lnkHistorial" NavigateUrl="~/MedicoHistorial.aspx">Historial</asp:HyperLink></li>
 				<li><asp:HyperLink runat="server" ID="lnkPacientes" NavigateUrl="~/MedicoPacientes.aspx">Pacientes</asp:HyperLink></li>
 				<li><asp:HyperLink runat="server" ID="lnkLogin" NavigateUrl="~/Login.aspx">Salir</asp:HyperLink></li>
 			</ul>
 		</div>
 	</div>
+
+
 	<div id="header">
 		<div id="logo" class="container">
 			<h1><a href="#">Estimación de edad ósea </a></h1>

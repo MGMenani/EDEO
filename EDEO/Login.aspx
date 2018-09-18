@@ -16,7 +16,7 @@
     <form id="form1" runat="server">
         <section class="cover">
             <div>
-                <asp:Image ID="Image1" ImageUrl="~/Stock/Panel copy.png" runat="server" />
+                <!--<asp:Image ID="Image1" ImageUrl="~/Stock/Panel copy.png" runat="server" /> -->
                 <div class="elements">
                     <div class="intro">
                         <asp:Label ID="Label1" runat="server" Text="Iniciar Sesión"></asp:Label>

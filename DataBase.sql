@@ -86,9 +86,10 @@ CREATE PROCEDURE Seleccionar_Expediente
 WITH EXECUTE AS CALLER  
 AS  
     SET NOCOUNT ON;  
-    SELECT E.Nombre AS NombrePaciente , E.Apellidos 'Apellidos',   
-      E.Cedula AS 'Cedula',   
-      E.FechaNacimiento AS FechaN 
+    SELECT Cedula as 'Cédula', 
+		   Nombre, 
+		   Apellidos, 
+		   convert(varchar, FechaNacimiento, 120) as 'Fecha de nacimiento (AAAA-DD-MM)' 
     FROM Expediente E    
     ORDER BY E.Nombre ASC;  
 GO  
@@ -173,9 +174,9 @@ CREATE PROCEDURE Seleccionar_Diagnostico
 WITH EXECUTE AS CALLER  
 AS  
     SET NOCOUNT ON;  
-    SELECT d.ID ID , d.IDExpediente 'ID Expediente',   
+    SELECT d.IDExpediente 'ID Expediente',   
       d.EdadCalculada AS 'Edad Calculada',   
-      d.Doctor  'Doctor' , d.Fecha 'Fecha'
+      d.Doctor  'Doctor' , convert(varchar, d.Fecha , 120) AS 'Fecha'
     FROM Diagnostico D 
     ORDER BY D.Fecha ASC;  
 GO  
