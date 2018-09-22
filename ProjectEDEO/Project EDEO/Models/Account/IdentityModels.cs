@@ -28,6 +28,9 @@ namespace Project_EDEO.Models
         {
         }
 
+        public DbSet<Diagnostic> Diagnostics { get; set; }
+        public DbSet<MedicalRecord> MedicalRecords { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

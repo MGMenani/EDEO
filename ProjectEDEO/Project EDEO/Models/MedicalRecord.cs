@@ -19,5 +19,6 @@ namespace Project_EDEO.Models
 
         // FK to entity owner (AKA Logged in user)
         public string UserID { get; set; }
+        public virtual ApplicationUser User { get; set; }
     }
 }
