@@ -40,35 +40,31 @@
                         <img class="align-content" src="/images/logo.png" alt="">
                     </a>
                 </div>
-                <div class="login-form">
-                    <form>
-                        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                        {
-                            @Html.AntiForgeryToken()
-                            @Html.ValidationSummary("", new { @class = "text-danger" })
-                            <div class="form-group">
-                                <label>Your name</label>
-                                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Name" })
-                            </div>
-                            <div class="form-group">
-                                <label>Email address</label>
-                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
-                            </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
-                            </div>
-                            <div class="form-group">
-                                <label>Confirm Password</label>
-                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Password" })
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Register</button>
-                            <div class="register-link m-t-15 text-center">
-                                <p>Already have account ? @Html.ActionLink(" Sign in", "Login")</p>
-                            </div>
-                        }
-                    </form>
-                </div>
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "login-form", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <label>Your name</label>
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Name" })
+                    </div>
+                    <div class="form-group">
+                        <label>Email address</label>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Password" })
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Register</button>
+                    <div class="register-link m-t-15 text-center">
+                        <p>Already have account ? @Html.ActionLink(" Sign in", "Login")</p>
+                    </div>
+                }
             </div>
         </div>
     </div>

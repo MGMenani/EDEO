@@ -41,36 +41,32 @@
                         <img class="align-content" src="/images/logo.png" alt="">
                     </a>
                 </div>
-                <div class="login-form">
-                    <form>
-                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                        {
-                            @Html.AntiForgeryToken()
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            <div class="form-group">
-                                <label>Email address</label>
-                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
-                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                            </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
-                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                            </div>
-                            <div class="checkbox">
-                                @Html.CheckBoxFor(m => m.RememberMe)
-                                @Html.LabelFor(m => m.RememberMe)
-                                <label class="pull-right">
-                                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                                </label>
-                            </div>
-                            <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
-                            <div class="register-link m-t-15 text-center">
-                                <p>Don't have account ? @Html.ActionLink("Sign Up Here", "Register")</p>
-                            </div>
-                        }
-                    </form>
-                </div>
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login-form", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <label>Email address</label>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="checkbox">
+                        @Html.CheckBoxFor(m => m.RememberMe)
+                        @Html.LabelFor(m => m.RememberMe)
+                        <label class="pull-right">
+                            @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
+                    <div class="register-link m-t-15 text-center">
+                        <p>Don't have account ? @Html.ActionLink("Sign Up Here", "Register")</p>
+                    </div>
+                }
             </div>
         </div>
     </div>
