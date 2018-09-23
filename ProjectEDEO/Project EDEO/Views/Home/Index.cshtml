@@ -1,7 +1,17 @@
 ﻿@section SPAViews {
     @Html.Partial("_Home")
 }
-@section Scripts{
-    @Scripts.Render("~/bundles/knockout")
-    @Scripts.Render("~/bundles/app")
+
+@section Scripts {
+    @Scripts.Render("~/bundles/dropzone")
+
+    <script type="text/javascript">
+        Dropzone.options.dropzoneForm = {
+            paramName: "file",
+            maxFilesize: 20,
+            maxFiles: 1,
+            acceptedFiles: "image/*",
+            dictMaxFilesExceeded: "Custom max files msg",
+        };
+    </script>
 }

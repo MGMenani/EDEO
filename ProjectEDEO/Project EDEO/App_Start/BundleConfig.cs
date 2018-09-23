@@ -40,6 +40,13 @@ namespace Project_EDEO
             bundles.Add(new StyleBundle("~/Content/css").Include(
                  "~/Content/bootstrap.css",
                  "~/Content/Site.css"));
+
+            // For DropzoneJS
+            bundles.Add(new ScriptBundle("~/bundles/dropzone").Include(
+                "~/Scripts/dropzone/dropzone.js"));
+
+            bundles.Add(new StyleBundle("~/Content/dropzone-css").Include(
+                "~/Scripts/dropzone/dropzone.css"));
         }
     }
 }
