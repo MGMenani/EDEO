@@ -26,6 +26,7 @@ namespace Project_EDEO.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+
         }
 
         public DbSet<Diagnostic> Diagnostics { get; set; }

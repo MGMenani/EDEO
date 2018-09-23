@@ -234,16 +234,26 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\MeController.cs" />
+    <Compile Include="Controllers\AccountControllers\AccountController.cs" />
+    <Compile Include="Controllers\AccountControllers\HomeController.cs" />
+    <Compile Include="Controllers\AccountControllers\ManageController.cs" />
+    <Compile Include="Controllers\AccountControllers\MeController.cs" />
+    <Compile Include="Controllers\DiagnosticsController.cs" />
+    <Compile Include="Controllers\MedicalRecordsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809221829087_First.cs" />
-    <Compile Include="Migrations\201809221829087_First.Designer.cs">
-      <DependentUpon>201809221829087_First.cs</DependentUpon>
+    <Compile Include="Migrations\201809230056333_first.cs" />
+    <Compile Include="Migrations\201809230056333_first.Designer.cs">
+      <DependentUpon>201809230056333_first.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809230548142_deleted.cs" />
+    <Compile Include="Migrations\201809230548142_deleted.Designer.cs">
+      <DependentUpon>201809230548142_deleted.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809230609592_modelUpdated.cs" />
+    <Compile Include="Migrations\201809230609592_modelUpdated.Designer.cs">
+      <DependentUpon>201809230609592_modelUpdated.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\AccountViewModels.cs" />
@@ -531,9 +541,14 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -601,6 +616,16 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Diagnostics\Create.cshtml" />
+    <Content Include="Views\Diagnostics\Delete.cshtml" />
+    <Content Include="Views\Diagnostics\Details.cshtml" />
+    <Content Include="Views\Diagnostics\Edit.cshtml" />
+    <Content Include="Views\Diagnostics\Index.cshtml" />
+    <Content Include="Views\MedicalRecords\Create.cshtml" />
+    <Content Include="Views\MedicalRecords\Delete.cshtml" />
+    <Content Include="Views\MedicalRecords\Details.cshtml" />
+    <Content Include="Views\MedicalRecords\Edit.cshtml" />
+    <Content Include="Views\MedicalRecords\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -612,15 +637,21 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809221829087_First.resx">
-      <DependentUpon>201809221829087_First.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201809230056333_first.resx">
+      <DependentUpon>201809230056333_first.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809230548142_deleted.resx">
+      <DependentUpon>201809230548142_deleted.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809230609592_modelUpdated.resx">
+      <DependentUpon>201809230609592_modelUpdated.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

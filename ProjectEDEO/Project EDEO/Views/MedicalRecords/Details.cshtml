@@ -1,0 +1,41 @@
+﻿@model Project_EDEO.Models.MedicalRecord
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <strong>Details of a</strong> medical record
+    </div>
+    <div class="card-body card-block">
+        <div class="row form-group">
+            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Name</label></div>
+            <div class="col-12 col-md-9">
+                @Html.DisplayFor(model => model.Name, new { htmlAttributes = new { @class = "form-control-static" } })
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Last name</label></div>
+            <div class="col-12 col-md-9">
+                @Html.DisplayFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control-static" } })
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Born date</label></div>
+            <div class="col-12 col-md-9">
+                @Html.DisplayFor(model => model.BornDate, new { htmlAttributes = new { @class = "form-control-static" } })
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <a href=@Url.Action("Edit", "MedicalRecords", new { id = Model.MedicalRecordID }) class="btn btn-secondary btn-sm" type="button">
+            <i class="fa fa-pencil"></i> Edit
+        </a>
+    </div>
+</div>
+
+<div>
+    <a href=@Url.Action("Index", "MedicalRecords") class="btn btn-outline-secondary" type="button">Back to list</a>
+</div>
