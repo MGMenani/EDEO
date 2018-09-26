@@ -4,14 +4,53 @@
 
 @Styles.Render("~/Content/dropzone-css")
 
-<div id="dropzone">
-    @using (Html.BeginForm("FileUpload", "Home", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "dropzone needsclick dz-clickable", @id = "dropzone-form" }))
-    {
-        <div class="fallback dz-message needsclick">
-            <input name="file" type="file" multiple />
-            <input type="submit" value="Upload" />
-        </div>
-    }
+<div id="dropzone" class="col-lg-12">
+    <div class="card">
+        @using (Html.BeginForm("FileUpload", "Home", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "dropzone needsclick dz-clickable", @id = "dropzone-form" }))
+        {
+            <div class="fallback dz-message needsclick">
+                <input name="file" type="file" multiple />
+                <input type="submit" value="Upload" />
+            </div>
+        }
+            <button type="button" class="btn btn-primary btn-lg btn-block">Estimate</button>
+    </div>
 </div>
 
+
+<div class="col-lg-12">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="~/images/EDEOLogo.png"/>
+        </div>
+        <div class=" col-md-4">
+            <img src="~/images/EDEOLogo.png"/>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Estimation:</strong> 
+                    <label id="lb_estimation"></label>
+                </div>
+                <div class="card-body">
+
+                    <select data-placeholder="Choose a Patient..." class="standardSelect" tabindex="1">
+                        <option value=""></option>
+                        <option value="United States">United States</option>
+                        <option value="United Kingdom">United Kingdom</option>
+                        <option value="Afghanistan">Afghanistan</option>
+                        <option value="Aland Islands">Aland Islands</option>
+                        <option value="Albania">Albania</option>
+                        <option value="Algeria">Algeria</option>
+                        <option value="American Samoa">American Samoa</option>
+                        <option value="Andorra">Andorra</option>
+                        <option value="Angola">Angola</option>
+                        <option value="Anguilla">Anguilla</option>
+                        <option value="Antarctica">Antarctica</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- /ko -->
