@@ -54,6 +54,7 @@ namespace Project_EDEO.Controllers
                 db.Diagnostics.Add(diagnostic);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+
             }
 
             return View(diagnostic);
