@@ -44,8 +44,9 @@
                     </div>
                     <div class="row form-group">
                         <div class="col col-md-3"><label for="text-input" class=" form-control-label">Date</label></div>
-                        @Html.DisplayFor(model => model.Date)
-                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="text-input" placeholder="asdf" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                        <div class="col-12 col-md-9">
+                            @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control-static" } })
+                        </div>
                     </div>
                 </form>
             </div>
