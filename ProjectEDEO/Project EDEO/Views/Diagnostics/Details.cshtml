@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<<<<<<< HEAD
 <div class="card">
     <div class="card-header">
         <strong>Basic Form</strong> Elements
@@ -30,8 +31,48 @@
         </form>
     </div>
 </div>
+=======
+<h2>Details</h2>
 
- 
+<div>
+    <h4>Diagnostic</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EstimatedAge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstimatedAge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+>>>>>>> parent of cd8eeb2... Cambios en el details de diagnostico
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MedicalRecordID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MedicalRecordID)
+        </dd>
+
+    </dl>
+</div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.DiagnosticID }) |
     @Html.ActionLink("Back to previous page", null, null, null, new { href = Request.UrlReferrer })
