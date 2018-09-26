@@ -52,18 +52,18 @@ def main(image, gender):
     # Load the female or male model
     # This model are not the weight only. This are the FULL Keras model
     if gender == "female":
-        model = load_model(running_dir + "./female_model.h5")
+        model = load_model(running_dir + ".\\female_model.h5")
     elif gender == "male":
-        model = load_model(running_dir + "./male_model.h5")
+        model = load_model(running_dir + ".\\male_model.h5")
 
     # Evaluates the image
     result = evaluate(model, image)
     k.clear_session()
 
-    return result
+    return result[0][0]
 
 
 
-main("C:\\Users\\migra\\Desktop\\Proyecto\\BoneAge\\Analizados\\3.png", "female")
+print(main("C:\\Users\\migra\\Desktop\\Proyecto\\BoneAge\\BoneAge\\BoneAge_XRay_CNN\\dataset\\preprocessed_best\\1385.png", "female"))
 #file_name, gender_param = sys.argv[1], sys.argv[2]
 #print(main(file_name, gender_param))
