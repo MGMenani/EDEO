@@ -1,5 +1,9 @@
 ﻿<!-- ko with: home -->
 
+@{
+    ViewBag.result = 0;
+}
+
 <h1>EDEO Project</h1>
 
 @Styles.Render("~/Content/dropzone-css")
@@ -13,7 +17,22 @@
                 <input type="submit" value="Upload" />
             </div>
         }
-            <button type="button" class="btn btn-primary btn-lg btn-block">Estimate</button>
+        <div class="row form-group">
+            <div class="col-sm-3"><label class=" form-control-label"><strong>Gender</strong></label></div>
+            <div class="col-lg-8">
+                <div class="form-check-inline form-check">
+                    <label for="inline-radio1" class="form-check-label ">
+                        <input type="radio" id="inline-radio1" name="inline-radios" value="option1" class="form-check-input">Male
+                    </label>
+                    <label for="inline-radio2" class="form-check-label ">
+                        <input type="radio" id="inline-radio2" name="inline-radios" value="option2" class="form-check-input">Female
+                    </label>
+                </div>
+            </div>
+
+
+        </div>
+        <button type="button" class="btn btn-primary btn-lg btn-block" >Estimate</button>
     </div>
 </div>
 
@@ -24,13 +43,13 @@
             <img src="~/images/EDEOLogo.png" />
         </div>
         <div class=" col-md-4">
-            <img src="~/images/EDEOLogo.png"/>
+            <img src="~/images/EDEOLogo.png" />
         </div>
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
-                    <strong>Estimation:</strong> 
-                    <label id="lb_estimation"></label>
+                    <strong>Estimation:</strong>
+                    <label id="lb_estimation">@ViewBag.result</label>
                 </div>
                 <div class="card-body">
 
