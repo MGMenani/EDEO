@@ -238,7 +238,6 @@
     <Compile Include="Controllers\AccountControllers\HomeController.cs" />
     <Compile Include="Controllers\AccountControllers\ManageController.cs" />
     <Compile Include="Controllers\AccountControllers\MeController.cs" />
-    <Compile Include="Controllers\SpecificDiagnostics.cs" />
     <Compile Include="Controllers\DiagnosticsController.cs" />
     <Compile Include="Controllers\MedicalRecordsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -256,13 +255,32 @@
     <Compile Include="Migrations\201809230609592_modelUpdated.Designer.cs">
       <DependentUpon>201809230609592_modelUpdated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809262058178_changes.cs" />
+    <Compile Include="Migrations\201809262058178_changes.Designer.cs">
+      <DependentUpon>201809262058178_changes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809262059414_cambio2.cs" />
+    <Compile Include="Migrations\201809262059414_cambio2.Designer.cs">
+      <DependentUpon>201809262059414_cambio2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809262105464_cambio21.cs" />
+    <Compile Include="Migrations\201809262105464_cambio21.Designer.cs">
+      <DependentUpon>201809262105464_cambio21.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809262108132_cambio3.cs" />
+    <Compile Include="Migrations\201809262108132_cambio3.Designer.cs">
+      <DependentUpon>201809262108132_cambio3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809262117360_migration.cs" />
+    <Compile Include="Migrations\201809262117360_migration.Designer.cs">
+      <DependentUpon>201809262117360_migration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\AccountViewModels.cs" />
     <Compile Include="Models\Account\IdentityModels.cs" />
     <Compile Include="Models\Account\ManageViewModels.cs" />
     <Compile Include="Models\Account\MeViewModels.cs" />
     <Compile Include="Models\Diagnostic.cs" />
-    <Compile Include="Models\DiagnosticoEspecifico.cs" />
     <Compile Include="Models\MedicalRecord.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
@@ -629,12 +647,12 @@
     <Content Include="Views\MedicalRecords\Details.cshtml" />
     <Content Include="Views\MedicalRecords\Edit.cshtml" />
     <Content Include="Views\MedicalRecords\Index.cshtml" />
+    <Content Include="Views\SpecificDiagnostics.cshtml" />
     <Content Include="Views\SpecificDiagnostics\Create.cshtml" />
     <Content Include="Views\SpecificDiagnostics\Delete.cshtml" />
     <Content Include="Views\SpecificDiagnostics\Details.cshtml" />
     <Content Include="Views\SpecificDiagnostics\Edit.cshtml" />
     <Content Include="Views\SpecificDiagnostics\Index.cshtml" />
-    <Content Include="Views\SpecificDiagnostics.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -660,6 +678,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809230609592_modelUpdated.resx">
       <DependentUpon>201809230609592_modelUpdated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809262058178_changes.resx">
+      <DependentUpon>201809262058178_changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809262059414_cambio2.resx">
+      <DependentUpon>201809262059414_cambio2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809262105464_cambio21.resx">
+      <DependentUpon>201809262105464_cambio21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809262108132_cambio3.resx">
+      <DependentUpon>201809262108132_cambio3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809262117360_migration.resx">
+      <DependentUpon>201809262117360_migration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

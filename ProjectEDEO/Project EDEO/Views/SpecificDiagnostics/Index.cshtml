@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Project_EDEO.Models.Diagnostic>
+﻿@model IEnumerable<Project_EDEO.Models.SpecificDiagnostic>
 
 @{
     ViewBag.Title = "Index";
@@ -42,9 +42,9 @@
             @Html.DisplayFor(modelItem => item.Date)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DiagnosticID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DiagnosticID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DiagnosticID })
+            @Html.ActionLink("Edit", "Edit", new { id=item.SpecificDiagnosticID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SpecificDiagnosticID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SpecificDiagnosticID })
         </td>
     </tr>
 }
