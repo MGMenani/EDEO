@@ -53,7 +53,7 @@ namespace Project_EDEO.Controllers
                 diagnostic.DiagnosticID = Guid.NewGuid();
                 db.Diagnostics.Add(diagnostic);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "MedicalRecords/Details/" + diagnostic.MedicalRecordID);
 
             }
 
@@ -86,7 +86,7 @@ namespace Project_EDEO.Controllers
             {
                 db.Entry(diagnostic).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "MedicalRecords/Details/" + diagnostic.MedicalRecordID);
             }
             return View(diagnostic);
         }
@@ -114,7 +114,7 @@ namespace Project_EDEO.Controllers
             Diagnostic diagnostic = db.Diagnostics.Find(id);
             db.Diagnostics.Remove(diagnostic);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "MedicalRecords/Details/" + diagnostic.MedicalRecordID);
         }
 
         protected override void Dispose(bool disposing)
