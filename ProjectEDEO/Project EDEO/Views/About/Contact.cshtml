@@ -4,5 +4,50 @@
     Layout = "~/Views/About/_Layout_Landing.cshtml";
 }
 
-<h2>Contact</h2>
+<!-- Page top section start -->
+<div class="page-top-area set-bg" data-setbg="../images/headers-bg/1.jpg">
+    <div class="breadcrumb-area">
+        @Html.ActionLink("Home", "Index", "About") / <span>Contact</span>
+    </div>
+</div>
 
+
+<!-- Contact section start -->
+<section class="contact-section set-bg spad" data-setbg="../images/contact-bg.jpg">
+    <div class="container-fluid contact-warp">
+        <div class="contact-text">
+            <div class="container p-0">
+                <span class="sp-sub-title">EDEO Project</span>
+                <h3 class="sp-title">Stay in touch</h3>
+                <p>We are currently in development process. If you want you can contact us and request a demo.</p>
+
+                <ul class="con-info">
+                    <li><i class="flaticon-envelope"></i>info@parma.ia</li>
+                    <li><i class="flaticon-placeholder"></i>Costa Rica Institute of Tecnology<br> Cartago, Costa Rica</li>
+                </ul>
+            </div>
+        </div>
+        <div class="container p-0">
+            <div class="row">
+                <div class="col-xl-8 offset-xl-4">
+                    <form class="contact-form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" placeholder="Your name">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" placeholder="E-mail">
+                            </div>
+                            <div class="col-md-12">
+                                <input type="text" placeholder="Subject">
+                                <textarea placeholder="Message"></textarea>
+                                <button class="site-btn light">Send</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Contact section end -->

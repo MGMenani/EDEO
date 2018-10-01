@@ -5,6 +5,7 @@
 }
 
 @Styles.Render("~/Content/dropzone-css")
+<link rel="stylesheet" href="~/assets/css/lib/chosen/chosen.min.css">
 
 <!-- Hero section start -->
 <section class="hero-section">
@@ -258,7 +259,6 @@
 @section Scripts {
     @Scripts.Render("~/bundles/dropzone")
     <script src="~/assets/js/lib/chosen/chosen.jquery.min.js"></script>
-    <link rel="stylesheet" href="~/assets/css/lib/chosen/chosen.min.css">
     <script>
         jQuery(document).ready(function () {
             jQuery(".standardSelect").chosen({
