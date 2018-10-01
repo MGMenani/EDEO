@@ -1,0 +1,51 @@
+﻿@model Project_EDEO.Models.SpecificDiagnostic
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SpecificDiagnostic</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MedicalRecord.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MedicalRecord.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstimatedAge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstimatedAge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SpecificDiagnosticID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
