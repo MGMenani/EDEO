@@ -7,11 +7,16 @@ using System.Web.Mvc;
 
 namespace Project_EDEO.Controllers
 {
-    [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
+            // Check if the user is not logged in
+            if (!User.Identity.IsAuthenticated)
+            {
+                // Redirect to the About landing page
+                return RedirectToAction("Index", "About");
+            }
             return View();
         }
 
