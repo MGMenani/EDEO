@@ -4,10 +4,12 @@
     Layout = "~/Views/About/_Layout_Landing.cshtml";
 }
 
+@Styles.Render("~/Content/dropzone-css")
+
 <!-- Hero section start -->
 <section class="hero-section">
     <div class="hero-slider owl-carousel">
-        <div class="hs-item set-bg sp-pad" data-setbg="~img/hero-slider/1.jpg">
+        <div class="hs-item set-bg sp-pad" data-setbg="../images/hero-slider/1.jpg">
             <div class="hs-text">
                 <h2 class="hs-title">EDEO</h2>
                 <p class="hs-des">The awesome bone age <br>Estimator</p>
@@ -35,6 +37,27 @@
     </div>
 </section>
 <!-- Intro section end -->
+<div id="dropzone" class="col-lg-9">
+    <div class="card">
+        @using (Html.BeginForm("Estimate", "About", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "dropzone needsclick dz-clickable", @id = "dropzone-form" }))
+        {
+        <div class="dz-message needsclick">
+            <i class="fa fa-upload fa-5x" aria-hidden="true"></i>
+            <br>
+            <p>Drop files here or click to find one on your device.</p>
+            <i class="fa fa-camera fa-3x"></i>
+            <br>
+            <p>If on a mobile device you can take a picture with your camera.</p>
+            <span class="note needsclick">
+                (Selected files will be
+                uploaded. Do not upload patient information. This application is
+                strictly for demonstration purposes and should not be used for clinical
+                decision making.)
+            </span>
+        </div>
+        }
+    </div>
+</div>
 <!-- Portfolio section start -->
 <section class="portfolio-section">
     <div class="portfolio-warp">
@@ -231,3 +254,34 @@
     </div>
 </section>
 <!-- Contact section end -->
+
+@section Scripts {
+    @Scripts.Render("~/bundles/dropzone")
+    <script src="~/assets/js/lib/chosen/chosen.jquery.min.js"></script>
+    <link rel="stylesheet" href="~/assets/css/lib/chosen/chosen.min.css">
+    <script>
+        jQuery(document).ready(function () {
+            jQuery(".standardSelect").chosen({
+                disable_search_threshold: 10,
+                no_results_text: "Oops, nothing found!",
+                width: "100%"
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        Dropzone.options.dropzoneForm = {
+            method: "POST",
+            paramName: "file",
+            uploadMultiple: false,
+            maxFilesize: 20,
+            maxFiles: 1,
+            resizeMethod: "contain",
+            resizeHeight: 250,
+            resizeWidth: 250,
+            resizeQuality: 1.0,
+            capture: "camera",
+            acceptedFiles: "image/*",
+            dictMaxFilesExceeded: "Only 1 image per estimation is possible"
+        };
+    </script>
+}
