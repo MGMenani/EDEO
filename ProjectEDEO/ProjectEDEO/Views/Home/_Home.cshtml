@@ -1,0 +1,86 @@
+﻿<!-- ko with: home -->
+
+@model Project_EDEO.Models.Home
+
+
+<h1>EDEO Project</h1>
+
+@Styles.Render("~/Content/dropzone-css")
+
+<div id="dropzone" class="col-lg-12">
+    <div class="card">
+        @using (Html.BeginForm("FileUpload", "Home", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "dropzone needsclick dz-clickable", @id = "dropzone-form" }))
+        {
+            <div class="fallback dz-message needsclick">
+                <input name="file" type="file" multiple />
+                <input type="submit" value="Upload" />
+            </div>
+        }
+
+        <div class="row form-group">
+            <div class="col-sm-3"><label class=" form-control-label"><strong>Gender</strong></label></div>
+            <div class="col-lg-8">
+                <div class="form-check-inline form-check">
+                    <label for="inline-radio1" class="form-check-label ">
+                        <input type="radio" id="inline-radio1" name="inline-radios" value="option1" class="form-check-input">Male
+                    </label>
+                    <label for="inline-radio2" class="form-check-label ">
+                        <input type="radio" id="inline-radio2" name="inline-radios" value="option2" class="form-check-input">Female
+                    </label>
+                </div>
+            </div>
+        </div>
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+        {
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Estimate</button>
+        }
+    </div>
+</div>
+
+
+<div class="col-lg-12">
+    <div class="row">
+
+        @if (@ViewBag.Image == "")
+        {
+            <div class="col-md-4">
+                <img src="~/images/EDEOLogo.png" />
+            </div>
+            <div class=" col-md-4">
+                <img src="~/images/EDEOLogo.png" />
+            </div>
+        }
+        else
+        {
+            <div class="col-md-4">
+                <img src="~/images/uploads/1377.png" />
+            </div>
+            <div class=" col-md-4">
+                <img src= "~/images/uploads/1377.png" />
+            </div>
+        }
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Estimation:</strong>
+                    @if (@ViewBag.flagvalue)
+                    {
+                        <label>@ViewBag.Estimation</label>
+                    }
+                </div>
+                <div class="card-body">
+
+                    <select data-placeholder="Choose a Patient..." class="standardSelect" tabindex="1">
+                        <option value=""></option>
+                        <option value="116570483">116570483</option>
+                    </select>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-primary btn-lg btn-block">Associate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /ko -->

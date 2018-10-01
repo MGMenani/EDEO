@@ -1,0 +1,26 @@
+﻿@section SPAViews {
+    @Html.Partial("_Home")
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/dropzone")
+    <script src="assets/js/lib/chosen/chosen.jquery.min.js"></script>
+    <link rel="stylesheet" href="assets/css/lib/chosen/chosen.min.css">
+    <script>
+        jQuery(document).ready(function () {
+            jQuery(".standardSelect").chosen({
+                disable_search_threshold: 10,
+                no_results_text: "Oops, nothing found!",
+                width: "100%"
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        Dropzone.options.dropzoneForm = {
+            paramName: "file",
+            maxFilesize: 20,
+            maxFiles: 1,
+            acceptedFiles: "image/*",
+            dictMaxFilesExceeded: "Only 1 image per estimation is possible",
+        };
+    </script>
+}
