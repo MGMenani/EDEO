@@ -707,6 +707,9 @@
     <Content Include="Views\SpecificDiagnostics.cshtml" />
     <Content Include="Views\About\_Layout_Landing.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\About\Us.cshtml" />
+    <Content Include="Views\About\Model.cshtml" />
+    <Content Include="Views\About\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

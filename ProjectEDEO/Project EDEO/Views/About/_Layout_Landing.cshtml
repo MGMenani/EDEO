@@ -41,10 +41,10 @@
         </div>
         <nav class="main-menu">
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About us</a></li>
-                <li><a href="#">The model</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li>@Html.ActionLink("Home", "Index", "About")</li>
+                <li>@Html.ActionLink("About us", "Us", "About")</li>
+                <li>@Html.ActionLink("The model", "Model", "About")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "About")</li>
                 <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: new { area = "" }, htmlAttributes: new { id = "loginLink" })</li>
             </ul>
         </nav>
