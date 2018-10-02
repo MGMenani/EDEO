@@ -9,6 +9,12 @@ namespace Project_EDEO.Controllers
 {
     public class HomeController : Controller
     {
+
+        public int imageGui = 5;
+        bool flag = false;
+        string filePath = "1377.png";
+        string pythonPath = @"C:\\Users\\migra\\AppData\\Local\\Programs\\Python\\Python35\\python.exe";
+
         public ActionResult Index()
         {
             // Check if the user is not logged in
