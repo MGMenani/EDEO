@@ -17,6 +17,24 @@ namespace Project_EDEO.Controllers
                 // Redirect to the About landing page
                 return RedirectToAction("Index", "About");
             }
+
+            // Loqueras de Michael xD
+            ViewBag.flagvalue = flag;
+            ViewBag.Image = "";
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Index(FormCollection frm)
+        {
+            flag = true;   //To know if there is a loaded image 
+            ViewBag.flagvalue = flag;
+
+            if (filePath != "")
+            {
+                // Redirect to the About landing page
+                return RedirectToAction("Index", "About");
+            }
             return View();
         }
 
