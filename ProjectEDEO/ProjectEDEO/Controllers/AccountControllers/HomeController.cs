@@ -9,7 +9,6 @@ using Project_EDEO.Models;
 
 namespace Project_EDEO.Controllers
 {
-    [Authorize]
     public class HomeController : Controller
     {
         public int imageGui = 5;
@@ -20,6 +19,14 @@ namespace Project_EDEO.Controllers
 
         public ActionResult Index()
         {
+            // Check if the user is not logged in
+            if (!User.Identity.IsAuthenticated)
+            {
+                // Redirect to the About landing page
+                return RedirectToAction("Index", "About");
+            }
+
+            // Loqueras de Michael xD
             ViewBag.flagvalue = flag;
             ViewBag.Image = "";
             return View();

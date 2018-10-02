@@ -282,6 +282,7 @@
     <Compile Include="Models\Account\ManageViewModels.cs" />
     <Compile Include="Models\Account\MeViewModels.cs" />
     <Compile Include="Models\Diagnostic.cs" />
+    <Compile Include="Models\Home.cs" />
     <Compile Include="Models\MedicalRecord.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
