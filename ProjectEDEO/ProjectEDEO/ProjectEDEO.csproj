@@ -415,6 +415,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Estimator\estimator.py" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="images\avatar\default.jpg" />
@@ -622,6 +623,8 @@
     <Content Include="assets\source\icon-font\Flaticon.ttf" />
     <Content Include="assets\source\icon-font\Flaticon.woff" />
     <Content Include="assets\source\icon-font\_flaticon.scss" />
+    <Content Include="Estimator\female_model.h5" />
+    <Content Include="Estimator\male_model.h5" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
