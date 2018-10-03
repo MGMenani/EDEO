@@ -418,14 +418,11 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="images\avatar\default.jpg" />
-    <Content Include="images\EDEOLogo.png" />
     <Content Include="images\firms\firma_parma.png" />
     <Content Include="images\firms\firma_tec.png" />
     <Content Include="images\firms\firma_ucr.png" />
     <Content Include="images\firms\firma_university_of_ljubljana.png" />
     <Content Include="images\firms\firma_university_of_toronto.png" />
-    <Content Include="images\logo.png" />
-    <Content Include="images\logo2.png" />
     <Content Include="images\client.jpg" />
     <Content Include="images\contact-bg.jpg" />
     <Content Include="images\headers-bg\1.jpg" />

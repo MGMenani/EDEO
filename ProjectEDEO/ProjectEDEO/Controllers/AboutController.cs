@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Net.Mail;
+using System.Diagnostics;
 
 namespace Project_EDEO.Controllers
 {
@@ -43,6 +44,33 @@ namespace Project_EDEO.Controllers
             {
                 string filePath = Guid.NewGuid() + Path.GetExtension(file.FileName);
                 file.SaveAs(Path.Combine(Server.MapPath("~/images/uploads"), filePath));
+
+                string imagePath = Path.Combine(Server.MapPath("~/images/uploads"), filePath);
+                
+                ProcessStartInfo start = new ProcessStartInfo();
+                start.FileName = "python";
+                start.Arguments = string.Format("{0} {1} {2}", Server.MapPath("~/Estimator/estimator.py"), imagePath, "male");
+                start.UseShellExecute = true;
+                start.RedirectStandardOutput = true;
+                start.RedirectStandardError = true;
+
+                string result = "";
+                using (Process process = Process.Start(start))
+                {
+                    using (StreamReader reader = process.StandardOutput)
+                    {
+                        string stderr = process.StandardError.ReadToEnd();
+                        result = reader.ReadToEnd();
+                        if (result != "")
+                        {
+                            ViewBag.Estimation = result + " meses.";
+                        }
+                        else
+                            ViewBag.Estimation = stderr;
+
+                        ViewBag.Image = "~/images/uploads/" + filePath;
+                    }
+                }
             }
             catch (Exception exception)
             {

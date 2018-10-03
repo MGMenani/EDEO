@@ -21,8 +21,8 @@ def load_image(file):
     # Open and converts the image
     # Returns the raw array image
     image = Image.open(file)
-    image.convert('L')
-    image.resize((255, 255))
+    image = image.convert('L')
+    image = image.resize((255, 255))
     raw_image = np.array(list(image.getdata()))
     image.close()
 
@@ -39,6 +39,7 @@ def evaluate(model, data):
 
 def format_x(x, image_shape):
     # Reshapes somehow the image in order to make it processable by the model
+    print(x.shape)
     unscaled = x.reshape(1, image_shape[0], image_shape[1]).astype('float16')
     stacked = np.stack([unscaled, unscaled, unscaled], axis=3)
     stacked /= 255
@@ -60,9 +61,8 @@ def main(image, gender):
     result = evaluate(model, image)
     k.clear_session()
 
-    return("%.2f" % result)
+    return "%.2f" % result
 
 
-#print(main("C:\\Users\\migra\\Desktop\\Proyecto\\BoneAge\\BoneAge\\BoneAge_XRay_CNN\\dataset\\preprocessed_best\\1385.png", "female"))
 file_name, gender_param = sys.argv[1], sys.argv[2]
 print(main(file_name, gender_param))
