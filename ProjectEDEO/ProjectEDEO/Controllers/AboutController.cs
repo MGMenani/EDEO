@@ -95,16 +95,27 @@ namespace Project_EDEO.Controllers
         {
             if (ModelState.IsValid)
             {
-                MailMessage mail = new MailMessage("96jaslat@gmail.com", "96jaslat@gmail.com");
+                MailMessage mail = new MailMessage("edeoproject@gmail.com", "edeoproject@gmail.com");
+
+                // More addresses
+                string addresses = "jlatouche@ic-itcr.ac.cr;migramenani1@gmail.com;alonsors.809@gmail.com;parma@tec.ac.cr"; 
+
+                foreach (var address in addresses.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    mail.To.Add(address);
+                }
+
                 SmtpClient client = new SmtpClient
                 {
                     Port = 587,
                     Host = "smtp.gmail.com",
-                    Credentials = new System.Net.NetworkCredential("96jaslat@gmail.com", "CONTRASEÑAMIEDO"),
+                    Credentials = new System.Net.NetworkCredential("edeoproject@gmail.com", "edeoboneage18"),
                     EnableSsl = true
                 };
+
+                // Mail body
                 mail.Subject = "[EDEO] - " + contact.Subject;
-                mail.Body = "From " + contact.Name + "(" + contact.Email + ")" + "\n" + contact.Message;
+                mail.Body = "From " + contact.Name + " <" + contact.Email + ">" + "\n\n" + contact.Message;
                 client.Send(mail);
 
                 return RedirectToAction("Index");

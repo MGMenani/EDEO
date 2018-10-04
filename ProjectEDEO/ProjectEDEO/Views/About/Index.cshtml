@@ -11,10 +11,10 @@
 <!-- Hero section start -->
 <section class="hero-section">
     <div class="hero-slider owl-carousel">
-        <div class="hs-item set-bg sp-pad" data-setbg="../images/hero-slider/2.jpg">
+        <div class="hs-item set-bg sp-pad" data-setbg="@Url.Content("~/images/hero-slider/2.jpg")">
             <div class="hs-text">
                 <h2 class="hs-title">EDEO</h2>
-                <p class="hs-des">The awesome bone age <br>Estimator</p>
+                <p class="hs-des">A Bone Age<br>Estimator</p>
             </div>
         </div>
     </div>
@@ -39,7 +39,7 @@
     </div>
 </section>
 <!-- Intro section end -->
-<section class="intro-section sp-pad spad">
+<section class="intro-section sp-pad spad center-block">
     <div id="dropzone" class="col-lg-9">
         <div class="card">
             @using (Html.BeginForm("Estimate", "About", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "dropzone needsclick dz-clickable", @id = "dropzone-form" }))
@@ -67,57 +67,57 @@
     <section class="portfolio-section">
         <div class="portfolio-warp">
             <!-- single item -->
-            <div class="single-portfolio set-bg" data-setbg="../images/portfolio/4454.png">
+            <div class="single-portfolio set-bg" data-setbg="@Url.Content("~/images/portfolio/4454.png")">
                 <a href="#" class="portfolio-info">
-                    <div class="pfbg set-bg" data-setbg="../images/portfolio/4454.png"></div>
+                    <div class="pfbg set-bg" data-setbg="@Url.Content("~/images/portfolio/4454.png")"></div>
                     <h5>Female hand</h5>
                     <p>60 months</br>5 years</p>
                 </a>
             </div>
             <!-- single item -->
-            <div class="single-portfolio set-bg" data-setbg="../images/portfolio/4474.png">
+            <div class="single-portfolio set-bg" data-setbg="@Url.Content("~/images/portfolio/4474.png")">
                 <a href="#" class="portfolio-info">
-                    <div class="pfbg set-bg" data-setbg="../images/portfolio/4474.png"></div>
+                    <div class="pfbg set-bg" data-setbg="@Url.Content("~/images/portfolio/4474.png")"></div>
                     <h5>Male hand</h5>
                     <p>165 months</br>13 years and 9 months</p>
                 </a>
             </div>
             <!-- single item -->
-            <div class="single-portfolio set-bg" data-setbg="../images/portfolio/4489.png">
+            <div class="single-portfolio set-bg" data-setbg="@Url.Content("~/images/portfolio/4489.png")">
                 <a href="#" class="portfolio-info">
-                    <div class="pfbg set-bg" data-setbg="../images/portfolio/4489.png"></div>
+                    <div class="pfbg set-bg" data-setbg="@Url.Content("~/images/portfolio/4489.png")"></div>
                     <h5>Male hand</h5>
                     <p>85 months</br>7 years and 1 month</p>
                 </a>
             </div>
             <!-- single item -->
-            <div class="single-portfolio sm-wide set-bg" data-setbg="../images/portfolio/4491.png">
+            <div class="single-portfolio sm-wide set-bg" data-setbg="@Url.Content("~/images/portfolio/4491.png")">
                 <a href="#" class="portfolio-info">
-                    <div class="pfbg set-bg" data-setbg="../images/portfolio/4491.png"></div>
+                    <div class="pfbg set-bg" data-setbg="@Url.Content("~/images/portfolio/4491.png")"></div>
                     <h5>Male hand</h5>
                     <p>168 months</br>14 years</p>
                 </a>
             </div>
             <!-- single item -->
-            <div class="single-portfolio sm-wide set-bg " data-setbg="../images/portfolio/4496.png">
+            <div class="single-portfolio sm-wide set-bg" data-setbg="@Url.Content("~/images/portfolio/4496.png")">
                 <a href="#" class="portfolio-info">
-                    <div class="pfbg set-bg" data-setbg="../images/portfolio/4496.png"></div>
+                    <div class="pfbg set-bg" data-setbg="@Url.Content("~/images/portfolio/4496.png")"></div>
                     <h5>Male hand</h5>
                     <p>120 months</br>10 years</p>
                 </a>
             </div>
             <!-- single item -->
-            <div class="single-portfolio set-bg" data-setbg="../images/portfolio/4538.png">
+            <div class="single-portfolio set-bg" data-setbg="@Url.Content("~/images/portfolio/4538.png")">
                 <a href="#" class="portfolio-info">
-                    <div class="pfbg set-bg" data-setbg="../images/portfolio/4538.png"></div>
+                    <div class="pfbg set-bg" data-setbg="@Url.Content("~/images/portfolio/4538.png")"></div>
                     <h5>Female hand</h5>
                     <p>156 months</br>13 years</p>
                 </a>
             </div>
             <!-- single item -->
-            <div class="single-portfolio sm-wide md-w-100 set-bg " data-setbg="../images/portfolio/4549.png">
+            <div class="single-portfolio sm-wide md-w-100 set-bg" data-setbg="@Url.Content("~/images/portfolio/4549.png")">
                 <a href="#" class="portfolio-info">
-                    <div class="pfbg set-bg" data-setbg="../images/portfolio/4549.png"></div>
+                    <div class="pfbg set-bg" data-setbg="@Url.Content("~/images/portfolio/4549.png")"></div>
                     <h5>Female hand</h5>
                     <p>106 months</br>8 years and 10 months</p>
                 </a>
@@ -192,7 +192,7 @@
     </section>
     <!-- Services section start end -->
     <!-- Contact section start -->
-    <section class="contact-section set-bg spad" data-setbg="../images/contact-bg.jpg">
+    <section class="contact-section set-bg spad" data-setbg="@Url.Content("~/images/contact-bg.jpg")">
         <div class="container-fluid contact-warp">
             <div class="contact-text">
                 <div class="container p-0">
@@ -201,7 +201,7 @@
                     <p>We are currently in development process. Feel free to contact us if you want to request a demo.</p>
 
                     <ul class="con-info">
-                        <li><i class="flaticon-envelope"></i>parma@itcr.ac.cr</li>
+                        <li><i class="flaticon-envelope"></i>parma@tec.ac.cr</li>
                         <li><i class="flaticon-placeholder"></i>Costa Rica Institute of Tecnology<br> Cartago, Costa Rica</li>
                     </ul>
                 </div>
