@@ -1,11 +1,12 @@
-﻿
+﻿@model Project_EDEO.Models.Contact
+
 @{
     ViewBag.Title = "Contact";
     Layout = "~/Views/About/_Layout_Landing.cshtml";
 }
 
 <!-- Page top section start -->
-<div class="page-top-area set-bg" data-setbg="../images/headers-bg/1.jpg">
+<div class="page-top-area set-bg" data-setbg="@Url.Content("~/images/hero-slider/.jpg")">
     <div class="breadcrumb-area">
         @Html.ActionLink("Home", "Index", "About") / <span>Contact</span>
     </div>
@@ -13,16 +14,16 @@
 
 
 <!-- Contact section start -->
-<section class="contact-section set-bg spad" data-setbg="../images/contact-bg.jpg">
+<section class="contact-section set-bg spad" data-setbg="@Url.Content("~/images/contact-bg.jpg")">
     <div class="container-fluid contact-warp">
-        <div classs="contact-text">
-            <div clas="container p-0">
+        <div class="contact-text">
+            <div class="container p-0">
                 <span class="sp-sub-title">EDEO Project</span>
                 <h3 class="sp-title">Stay in touch</h3>
-                <p>We are currently in development process. If you want you can contact us and request a demo.</p>
+                <p>We are currently in development process. Feel free to contact us if you want to request a demo.</p>
 
                 <ul class="con-info">
-                    <li><i class="flaticon-envelope"></i>info@parma.ia</li>
+                    <li><i class="flaticon-envelope"></i>parma@tec.ac.cr</li>
                     <li><i class="flaticon-placeholder"></i>Costa Rica Institute of Tecnology<br> Cartago, Costa Rica</li>
                 </ul>
             </div>
@@ -30,21 +31,23 @@
         <div class="container p-0">
             <div class="row">
                 <div class="col-xl-8 offset-xl-4">
-                    <form class="contact-form">
+                    @using (Html.BeginForm("Email", "About", null, FormMethod.Post, new { @class = "contact-form" }))
+                    {
+                        @Html.AntiForgeryToken()
                         <div class="row">
                             <div class="col-md-6">
-                                <input type="text" placeholder="Your name">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @type = "text", @placeholder = "Your name" } })
                             </div>
                             <div class="col-md-6">
-                                <input type="email" placeholder="E-mail">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @type = "email", @placeholder = "E-mail" } })
                             </div>
                             <div class="col-md-12">
-                                <input type="text" placeholder="Subject">
-                                <textarea placeholder="Message"></textarea>
+                                @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @type = "text", @placeholder = "Subject" } })
+                                @Html.TextAreaFor(model => model.Message, 10, 80, new { @placeholder = "Message" })
                                 <button class="site-btn light">Send</button>
                             </div>
                         </div>
-                    </form>
+                    }
                 </div>
             </div>
         </div>
