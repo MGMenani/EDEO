@@ -39,9 +39,10 @@
     </div>
 </section>
 <!-- Intro section end -->
-<section class="intro-section sp-pad spad center-block">
-    <div id="dropzone" class="col-lg-9">
-        <div class="card">
+<section class="sp-pad">
+    <h1 class="sp-title">Try our estimator</h1>
+    <div id="dropzone" class="container-fluid">
+        <div class="center-block">
             @using (Html.BeginForm("Estimate", "About", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "dropzone needsclick dz-clickable", @id = "dropzone-form" }))
             {
                 <div class="dz-message needsclick">
@@ -51,12 +52,6 @@
                     <i class="fa fa-camera fa-3x"></i>
                     <br>
                     <p>If on a mobile device you can take a picture with your camera.</p>
-                    <span class="note needsclick">
-                        (Selected files will be
-                        uploaded. Do not upload patient information. This application is
-                        strictly for demonstration purposes and should not be used for clinical
-                        decision making.)
-                    </span>
                 </div>
             }
         </div>
@@ -250,12 +245,8 @@
                 method: "POST",
                 paramName: "file",
                 uploadMultiple: false,
-                maxFilesize: 20,
                 maxFiles: 1,
-                resizeMethod: "contain",
-                resizeHeight: 250,
-                resizeWidth: 250,
-                resizeQuality: 1.0,
+                maxFilesize: 20,
                 capture: "camera",
                 acceptedFiles: "image/*",
                 dictMaxFilesExceeded: "Only 1 image per estimation is possible"
