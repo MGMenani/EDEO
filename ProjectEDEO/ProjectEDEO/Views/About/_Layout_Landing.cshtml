@@ -35,17 +35,17 @@
 
     <!-- Header section start -->
     <header class="header-section sp-pad">
-        <h3 class="site-logo">EDEO</h3>
+        <img class="site-logo" height="30" src="~/images/logos/edeo_white.png" />
         <div class="nav-switch">
             <i class="fa fa-bars"></i>
         </div>
         <nav class="main-menu">
             <ul>
-                <li>@Html.ActionLink("Home", "Index", "About")</li>
-                <li>@Html.ActionLink("About us", "Us", "About")</li>
-                <li>@Html.ActionLink("The model", "Model", "About")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "About")</li>
-                <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: new { area = "" }, htmlAttributes: new { id = "loginLink" })</li>
+                <li>@Html.ActionLink("Inicio", "Index", "About")</li>
+                <li>@Html.ActionLink("Sobre nosotros", "Us", "About")</li>
+                <li>@Html.ActionLink("El modelo", "Model", "About")</li>
+                <li>@Html.ActionLink("Contacto", "Contact", "About")</li>
+                <li>@Html.ActionLink("Sesión", "Login", "Account", routeValues: new { area = "" }, htmlAttributes: new { id = "loginLink" })</li>
             </ul>
         </nav>
     </header>
@@ -57,7 +57,7 @@
     <!-- Footer section start -->
     <footer class="footer-section spad">
         <div class="container text-center">
-            <h2>Let’s work together!</h2>
+            <h2>Trabajemos juntos!</h2>
             <p>parma@tec.ac.cr</p>
             <div class="row justify-content-center justify-content-between">
                 <div class="col">
@@ -91,7 +91,7 @@
                 <a href="http://www.facebook.com/ParmaResearchGroup/"><i class="fa fa-facebook"></i>  PARMA Group</a>
                 <a href="http://parma.ic-itcr.ac.cr/"><i class="fa fa-dribbble"></i>  PARMA Web Site</a> <br />
                 <br />
-                &copy; @DateTime.Now.Year All rights reserved | This page is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by EDEO team
+                &copy; @DateTime.Now.Year Todos los derechos reservados | Con <i class="fa fa-heart-o" aria-hidden="true"></i> por el equipo EDEO
             </div>
         </div>
 
