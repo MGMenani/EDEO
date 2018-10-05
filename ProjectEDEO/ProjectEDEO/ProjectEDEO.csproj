@@ -433,6 +433,7 @@
     <Content Include="images\hero-slider\1.jpg" />
     <Content Include="images\hero-slider\2.jpg" />
     <Content Include="images\intro.jpg" />
+    <Content Include="images\loading.gif" />
     <Content Include="images\logos\edeo_black.png" />
     <Content Include="images\logos\edeo_white.png" />
     <Content Include="images\logos\hand_black.png" />

@@ -42,35 +42,49 @@ namespace Project_EDEO.Controllers
         {
             try
             {
+                // Giving new name and saving to disk
                 string filePath = Guid.NewGuid() + Path.GetExtension(file.FileName);
                 file.SaveAs(Path.Combine(Server.MapPath("~/images/uploads"), filePath));
 
+                // Server path for processing
                 string imagePath = Path.Combine(Server.MapPath("~/images/uploads"), filePath);
-                
-                ProcessStartInfo start = new ProcessStartInfo();
-                start.FileName = "python";
-                start.Arguments = string.Format("{0} {1} {2}", Server.MapPath("~/Estimator/estimator.py"), imagePath, "male");
-                start.UseShellExecute = false;
-                start.RedirectStandardOutput = true;
-                start.RedirectStandardError = true;
 
+                // Resource path for HTML
+                string sourcePath = "/images/uploads/" + filePath;
+
+                // Preparing for a Python call
+                ProcessStartInfo start = new ProcessStartInfo
+                {
+                    FileName = "python",
+                    Arguments = string.Format("{0} {1} {2}", Server.MapPath("~/Estimator/estimator.py"), imagePath, "male"),
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true
+                };
+
+                // Ready for call
                 string result = "";
                 using (Process process = Process.Start(start))
                 {
                     using (StreamReader reader = process.StandardOutput)
                     {
+                        // Calling
                         string stderr = process.StandardError.ReadToEnd();
                         result = reader.ReadToEnd();
-                        if (result != "")
-                        {
-                            ViewBag.Estimation = result + " meses.";
-                        }
-                        else
-                            ViewBag.Estimation = stderr;
 
-                        ViewBag.Image = "~/images/uploads/" + filePath;
+                        // If no results
+                        if (result == "")
+                            result = "An error ocurred: " + stderr;
                     }
                 }
+                // Returning JSON
+                return Json(new
+                {
+                    success = true,
+                    response = "File uploaded",
+                    image = sourcePath,
+                    age = result
+                });
             }
             catch (Exception exception)
             {
@@ -80,12 +94,6 @@ namespace Project_EDEO.Controllers
                     response = exception.Message
                 });
             }
-
-            return Json(new
-            {
-                success = true,
-                response = "File uploaded."
-            });
         }
 
         // POST: About/Email

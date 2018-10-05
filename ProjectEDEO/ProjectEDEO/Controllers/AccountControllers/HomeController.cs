@@ -14,7 +14,7 @@ namespace Project_EDEO.Controllers
         public int imageGui = 5;
         bool flag = false;
         string filePath = "1377.png";
-        string pythonPath = @"C:\\Users\\migra\\AppData\\Local\\Programs\\Python\\Python35\\python.exe";
+        string pythonPath = @"python";
 
         public ActionResult Index()
         {

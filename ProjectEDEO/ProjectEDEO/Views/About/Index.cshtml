@@ -57,17 +57,28 @@
         </div>
     </div>
 
-    <div id="results">
+    <div id="loading" style="display: none;">
         <div class="row align-items-center mb-0">
-            <div class="col-12 col-md-6 text-center">
+            <div class="col-12 text-center">
+                <img src="~/images/loading.gif" />
+                <p>Cargando...</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="results" style="display: none;">
+        <div class="row align-items-center mb-0">
+            <div id="image" class="col-12 col-md-6 text-center">
                 <img src="~/images/logos/logo_black.png" />
             </div>
             <div class="col-12 col-md-5 offset-md-1 text-center text-md-left">
                 <h3 class="sp-sub-title">Edad ósea estimada</h3>
-                <p>1 mes xD</p>
+                <p id="age">1 mes xD</p>
             </div>
         </div>
     </div>
+    <p></p>
+    <br/>
 </section>
 
 <!-- Portfolio section start -->
@@ -253,6 +264,18 @@
         });
     </script>
     <script type="text/javascript">
+        function displayLoading() {
+            $('#dropzone').hide();
+            $('#loading').show();
+        };
+
+        function showResults(image, age) {
+            $('#loading').hide();
+            $('#results').show();
+            $('#age').html(age);
+            $('#image').html('<img src="' + image + '" height="300" />');
+        };
+
         Dropzone.options.dropzoneForm = {
             method: "POST",
             paramName: "file",
@@ -261,7 +284,21 @@
             maxFilesize: 20,
             capture: "camera",
             acceptedFiles: "image/*",
-            dictMaxFilesExceeded: "Only 1 image per estimation is possible"
+            dictMaxFilesExceeded: "Solo una imágen por estimación es posible",
+            init: function () {
+                this.on("sending", function (file) {
+                    displayLoading();
+                });
+                this.on("error", function (file) {
+                    $('#results').html("<p>Something went wrong :(</p>");
+                });
+                this.on("success", function (file, response) {
+                    var image = response['image']
+                    var age = response['age']
+                    showResults(image, age);
+                    this.removeFile(file);
+                });
+            }
         };
     </script>
 }
