@@ -12,9 +12,12 @@ namespace Project_EDEO.Controllers
 {
     public class AboutController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
         // GET: About
         public ActionResult Index()
         {
+            ViewBag.EstimationCount = db.Estimations.Count();
             return View();
         }
 
@@ -74,16 +77,34 @@ namespace Project_EDEO.Controllers
 
                         // If no results
                         if (result == "")
-                            result = "An error ocurred: " + stderr;
+                            throw new System.NullReferenceException("Empty result");
                     }
                 }
+
+                float age = float.Parse(result);
+
+                // Create new entry
+                Estimation estimation = new Estimation
+                {
+                    EstimationID = Guid.NewGuid(),
+                    Gender = Gender.female,
+                    Image = sourcePath,
+                    EstimatedAge = age,
+                    IPAddress = Request.UserHostAddress,
+                    DateTime = DateTime.Now
+                };
+
+                // Save entry
+                db.Estimations.Add(estimation);
+                db.SaveChanges();
+
                 // Returning JSON
                 return Json(new
                 {
                     success = true,
                     response = "File uploaded",
                     image = sourcePath,
-                    age = result
+                    estimation = age
                 });
             }
             catch (Exception exception)

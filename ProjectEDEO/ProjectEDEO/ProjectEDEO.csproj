@@ -276,6 +276,10 @@
     <Compile Include="Migrations\201809262117360_migration.Designer.cs">
       <DependentUpon>201809262117360_migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810060236123_estimations.cs" />
+    <Compile Include="Migrations\201810060236123_estimations.Designer.cs">
+      <DependentUpon>201810060236123_estimations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\AccountViewModels.cs" />
     <Compile Include="Models\Account\IdentityModels.cs" />
@@ -283,6 +287,7 @@
     <Compile Include="Models\Account\MeViewModels.cs" />
     <Compile Include="Models\Diagnostic.cs" />
     <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\Estimation.cs" />
     <Compile Include="Models\Home.cs" />
     <Compile Include="Models\MedicalRecord.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -749,6 +754,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809262117360_migration.resx">
       <DependentUpon>201809262117360_migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810060236123_estimations.resx">
+      <DependentUpon>201810060236123_estimations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

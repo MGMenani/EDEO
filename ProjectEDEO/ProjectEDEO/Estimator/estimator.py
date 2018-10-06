@@ -7,10 +7,10 @@ import numpy as np
 
 from PIL import Image
 
-from keras import backend as k
 from keras.models import load_model
 
 warnings.simplefilter(action='ignore', category=FutureWarning)
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 np.set_printoptions(threshold=np.nan)
 
 running_dir = os.path.dirname(os.path.abspath(__file__))
@@ -34,12 +34,11 @@ def evaluate(model, data):
     # Receive a Keras model and a raw image
     # Returns the estimation
     data = format_x(data, (255, 255))
-    return model.predict(data, verbose=True)
+    return model.predict(data, verbose=False)
 
 
 def format_x(x, image_shape):
     # Reshapes somehow the image in order to make it processable by the model
-    print(x.shape)
     unscaled = x.reshape(1, image_shape[0], image_shape[1]).astype('float16')
     stacked = np.stack([unscaled, unscaled, unscaled], axis=3)
     stacked /= 255
@@ -52,14 +51,14 @@ def main(image, gender):
 
     # Load the female or male model
     # This model are not the weight only. This are the FULL Keras model
-    if gender == "female":
+    if gender == "female":  # Female model
         model = load_model(running_dir + ".\\female_model.h5")
-    elif gender == "male":
+    else:  # Male model
         model = load_model(running_dir + ".\\male_model.h5")
 
     # Evaluates the image
     result = evaluate(model, image)
-    k.clear_session()
+    # k.clear_session()
 
     return "%.2f" % result
 

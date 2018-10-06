@@ -32,6 +32,9 @@ namespace Project_EDEO.Models
         public DbSet<Diagnostic> Diagnostics { get; set; }
         public DbSet<MedicalRecord> MedicalRecords { get; set; }
 
+        // Used for statistic in About page
+        public DbSet<Estimation> Estimations { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
