@@ -424,7 +424,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="images\avatar\default.jpg" />
-    <Content Include="images\client.png" />
+    <Content Include="images\profiles\profile_client.png" />
     <Content Include="images\firms\firma_parma.png" />
     <Content Include="images\firms\firma_tec.png" />
     <Content Include="images\firms\firma_ucr.png" />
@@ -457,6 +457,7 @@
     <Content Include="images\profiles\profile_3.jpg" />
     <Content Include="images\profiles\profile_4.jpg" />
     <Content Include="images\review-bg.jpg" />
+    <Content Include="images\team.jpg" />
     <Content Include="Scripts\app\_run.js" />
     <Content Include="Scripts\app\app.datamodel.js" />
     <Content Include="Scripts\app\app.viewmodel.js" />

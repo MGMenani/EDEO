@@ -43,8 +43,8 @@
             <ul>
                 <li>@Html.ActionLink("Inicio", "Index", "About")</li>
                 <li>@Html.ActionLink("Sobre nosotros", "Us", "About")</li>
-                <li>@Html.ActionLink("El modelo", "Model", "About")</li>
-                <li>@Html.ActionLink("Contacto", "Contact", "About")</li>
+                <li style="display: none;">@Html.ActionLink("El modelo", "Model", "About")</li>
+                <li style="display: none;">@Html.ActionLink("Contacto", "Contact", "About")</li>
                 <li>@Html.ActionLink("Sesión", "Login", "Account", routeValues: new { area = "" }, htmlAttributes: new { id = "loginLink" })</li>
             </ul>
         </nav>
