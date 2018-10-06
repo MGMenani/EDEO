@@ -58,12 +58,12 @@
                     <div class="checkbox">
                         @Html.CheckBoxFor(m => m.RememberMe)
                         @Html.LabelFor(m => m.RememberMe)
-                        <label class="pull-right">
+                        <label class="pull-right" style="display: none;">
                             @Html.ActionLink("Forgot your password?", "ForgotPassword")
                         </label>
                     </div>
                     <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
-                    <div class="register-link m-t-15 text-center">
+                    <div class="register-link m-t-15 text-center" style="display: none;">
                         <p>Don't have account ? @Html.ActionLink("Sign Up Here", "Register")</p>
                     </div>
                 }
