@@ -424,12 +424,12 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="images\avatar\default.jpg" />
+    <Content Include="images\client.png" />
     <Content Include="images\firms\firma_parma.png" />
     <Content Include="images\firms\firma_tec.png" />
     <Content Include="images\firms\firma_ucr.png" />
     <Content Include="images\firms\firma_university_of_ljubljana.png" />
     <Content Include="images\firms\firma_university_of_toronto.png" />
-    <Content Include="images\client.jpg" />
     <Content Include="images\contact-bg.jpg" />
     <Content Include="images\headers-bg\1.jpg" />
     <Content Include="images\headers-bg\2.jpg" />
@@ -452,6 +452,11 @@
     <Content Include="images\portfolio\4496.png" />
     <Content Include="images\portfolio\4538.png" />
     <Content Include="images\portfolio\4549.png" />
+    <Content Include="images\profiles\profile_1.jpg" />
+    <Content Include="images\profiles\profile_2.jpg" />
+    <Content Include="images\profiles\profile_3.jpg" />
+    <Content Include="images\profiles\profile_4.jpg" />
+    <Content Include="images\review-bg.jpg" />
     <Content Include="Scripts\app\_run.js" />
     <Content Include="Scripts\app\app.datamodel.js" />
     <Content Include="Scripts\app\app.viewmodel.js" />
