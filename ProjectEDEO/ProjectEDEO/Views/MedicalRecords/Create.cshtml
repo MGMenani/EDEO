@@ -31,7 +31,7 @@
             <div class="row form-group">
                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Born date</label></div>
                 <div class="col-12 col-md-9">
-                    @Html.EditorFor(model => model.BornDate, new { htmlAttributes = new { @id = "text-input", @name = "text-input", @placeholder = "dd/MM/yyyy", @class = "form-control" } })
+                    @Html.EditorFor(model => model.BornDate, new { htmlAttributes = new { @id = "text-input", @name = "text-input", @placeholder = "dd/MM/yyyy", @class = "form-control", @type = "date" } })
                     @Html.ValidationMessageFor(model => model.BornDate, "", new { @class = "form-text text-muted text-danger" })
                 </div>
             </div>

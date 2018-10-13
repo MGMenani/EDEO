@@ -31,24 +31,12 @@
             <div class="row form-group">
                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Born date</label></div>
                 <div class="col-12 col-md-9">
-                    @Html.EditorFor(model => model.BornDate, new { htmlAttributes = new { @id = "text-input", @name = "text-input", @placeholder = "Date", @class = "form-control" } })
+                    @Html.EditorFor(model => model.BornDate, new { htmlAttributes = new { @id = "text-input", @name = "text-input", @Value = Model.BornDate.ToString("dd/MM/yyyy"), @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.BornDate, "", new { @class = "form-text text-muted text-danger" })
                 </div>
             </div>
-            <div class="row form-group">
-                <div class="col col-md-3"><label for="text-input" class=" form-control-label">User ID</label></div>
-                <div class="col-12 col-md-9">
-                    @Html.EditorFor(model => model.UserID, new { htmlAttributes = new { @id = "text-input", @name = "text-input", @placeholder = "Date", @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.UserID, "", new { @class = "form-text text-muted text-danger" })
-                </div>
-            </div>
-            <div class="row form-group">
-                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Medical Record ID</label></div>
-                <div class="col-12 col-md-9">
-                    @Html.EditorFor(model => model.MedicalRecordID, new { htmlAttributes = new { @id = "text-input", @name = "text-input", @placeholder = "Date", @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.MedicalRecordID, "", new { @class = "form-text text-muted text-danger" })
-                </div>
-            </div>
+            @Html.HiddenFor(model => model.UserID, new { htmlAttributes = new { @id = "text-input", @name = "text-input", @placeholder = "Date", @class = "form-control" } })
+            @Html.HiddenFor(model => model.MedicalRecordID, new { htmlAttributes = new { @id = "text-input", @name = "text-input", @placeholder = "Date", @class = "form-control" } })
         </div>
         <div class="card-footer">
             <button type="submit" class="btn btn-success btn-sm">
