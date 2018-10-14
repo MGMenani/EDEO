@@ -60,7 +60,7 @@ namespace Project_EDEO.Controllers
                 ProcessStartInfo start = new ProcessStartInfo
                 {
                     FileName = "python",
-                    Arguments = string.Format("{0} {1} {2}", Server.MapPath("~/Estimator/estimator.py"), imagePath, "male"),
+                    Arguments = string.Format("{0} {1} {2}", Server.MapPath("~/Estimator/Default/estimator.py"), imagePath, "male"),
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     RedirectStandardError = true

@@ -44,7 +44,7 @@ namespace Project_EDEO.Controllers
                 //llama la función de python
                 ProcessStartInfo start = new ProcessStartInfo();
                 start.FileName = pythonPath;
-                start.Arguments = string.Format("{0} {1} {2}", Server.MapPath("~/Estimator/estimator.py"), imagePath + "", "male"); //Path to .py file and any cmd line args
+                start.Arguments = string.Format("{0} {1} {2}", Server.MapPath("~/Estimator/Default/estimator.py"), imagePath + "", "male"); //Path to .py file and any cmd line args
                 start.UseShellExecute = false;
                 start.RedirectStandardOutput = true;
                 start.RedirectStandardError = true;
