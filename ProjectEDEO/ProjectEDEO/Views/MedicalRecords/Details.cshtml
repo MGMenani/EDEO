@@ -65,14 +65,19 @@
                             @Html.DisplayFor(modelItem => item.Image)
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "Edit","Diagnostics", new { id = item.DiagnosticID }, null) |
-                            @Html.ActionLink("Details", "Details","Diagnostics", new { id = item.DiagnosticID },null) |
+                            @Html.ActionLink("Edit", "Edit", "Diagnostics", new { id = item.DiagnosticID }, null) |
+                            @Html.ActionLink("Details", "Details", "Diagnostics", new { id = item.DiagnosticID }, null) |
                             @Html.ActionLink("Delete", "Delete", "Diagnostics", new { id = item.DiagnosticID }, null)
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
+    </div>
+    <div class="card-footer">
+        <a href=@Url.Action("Download", "MedicalRecords", new { id = Model.MedicalRecordID }) class="btn btn-secondary btn-sm" type="button">
+            <i class="ti ti-save"></i> Download CSV
+        </a>
     </div>
 </div>
 

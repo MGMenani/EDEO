@@ -120,6 +120,25 @@ namespace Project_EDEO.Controllers
             return RedirectToAction("Index");
         }
 
+
+        public FileContentResult Download(Guid id)
+        {
+            MedicalRecord medicalRecord = db.MedicalRecords.Find(id);
+            string csv = "Age,Estimation\r\n";
+
+            foreach (var diagnostic in medicalRecord.Diagnostics)
+            {
+                csv += diagnostic.EstimatedAge.ToString();
+                csv += ",";
+                csv += diagnostic.EstimatedAge.ToString();
+                csv += "\r\n";
+            }
+
+            String timeStamp = DateTime.Now.ToString("yyyyMMddHHmmssffff");
+
+            return File(new System.Text.UTF8Encoding().GetBytes(csv), "text/csv", "BoneAge_" + timeStamp + ".csv");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
