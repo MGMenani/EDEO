@@ -1,0 +1,25 @@
+﻿@model Project_EDEO.Models.Contact
+
+@{
+    ViewBag.Title = "Share";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Numero</h2>
+@using (Html.BeginForm("Share", "Diagnostics", null, FormMethod.Post, new { @class = "contact-form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @type = "text", @placeholder = "Su nombre" } })
+        </div>
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @type = "email", @placeholder = "E-mail" } })
+        </div>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @type = "text", @placeholder = "Asunto" } })
+            @Html.TextAreaFor(model => model.Message, 10, 80, new { @placeholder = "Mensaje" })
+            <button class="site-btn light">Enviar</button>
+        </div>
+    </div>
+}

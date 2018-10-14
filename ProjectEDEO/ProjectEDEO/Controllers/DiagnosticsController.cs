@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Project_EDEO.Models;
+using System.Net.Mail;
 
 namespace Project_EDEO.Controllers
 {
@@ -114,6 +115,50 @@ namespace Project_EDEO.Controllers
             db.Diagnostics.Remove(diagnostic);
             db.SaveChanges();
             return RedirectToAction("Details/" + diagnostic.MedicalRecordID, "MedicalRecords/");
+        }
+
+        // GET: Diagnostics/Share
+        public ActionResult Share()
+        {
+            //ViewBag.Numero = db.Users;            
+            return View();
+        }
+
+        // POST: Diagnostics/Share
+       
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Share([Bind(Include = "Name,Email,Subject,Message")] Contact contact)
+        {
+            if (ModelState.IsValid)
+            {
+                MailMessage mail = new MailMessage("edeoproject@gmail.com", "edeoproject@gmail.com");
+
+                // More addresses
+                string addresses = "alonsors.809@gmail.com";
+
+                foreach (var address in addresses.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    mail.To.Add(address);
+                }
+
+                SmtpClient client = new SmtpClient
+                {
+                    Port = 587,
+                    Host = "smtp.gmail.com",
+                    Credentials = new System.Net.NetworkCredential("edeoproject@gmail.com", "edeoboneage18"),
+                    EnableSsl = true
+                };
+
+                // Mail body
+                mail.Subject = "[EDEO] - " + contact.Subject;
+                mail.Body = "From " + contact.Name + " <" + contact.Email + ">" + "\n\n" + contact.Message;
+                client.Send(mail);
+
+                return RedirectToAction("Index");
+            }
+
+            return View();
         }
 
         protected override void Dispose(bool disposing)

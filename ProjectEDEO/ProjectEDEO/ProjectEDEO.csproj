@@ -720,6 +720,7 @@
     <Content Include="Views\About\Us.cshtml" />
     <Content Include="Views\About\Model.cshtml" />
     <Content Include="Views\About\Contact.cshtml" />
+    <Content Include="Views\Diagnostics\Share.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
