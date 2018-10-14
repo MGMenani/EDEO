@@ -236,7 +236,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountControllers\AccountController.cs" />
-    <Compile Include="Controllers\AccountControllers\HomeController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountControllers\ManageController.cs" />
     <Compile Include="Controllers\AccountControllers\MeController.cs" />
     <Compile Include="Controllers\DiagnosticsController.cs" />
