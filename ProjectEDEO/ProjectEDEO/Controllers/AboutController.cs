@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Net.Mail;
 using System.Diagnostics;
 
+
 namespace Project_EDEO.Controllers
 {
     public class AboutController : Controller
@@ -80,8 +81,7 @@ namespace Project_EDEO.Controllers
                             throw new System.NullReferenceException("Empty result");
                     }
                 }
-
-                float age = float.Parse(result);
+                float age = float.Parse(result, System.Globalization.CultureInfo.InvariantCulture.NumberFormat);            
 
                 // Create new entry
                 Estimation estimation = new Estimation
