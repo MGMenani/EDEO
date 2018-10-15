@@ -236,6 +236,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountControllers\AccountController.cs" />
+    <Compile Include="Controllers\EstimatorModelsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountControllers\ManageController.cs" />
     <Compile Include="Controllers\AccountControllers\MeController.cs" />
@@ -280,6 +281,10 @@
     <Compile Include="Migrations\201810060236123_estimations.Designer.cs">
       <DependentUpon>201810060236123_estimations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810142316569_EstimatorModels.cs" />
+    <Compile Include="Migrations\201810142316569_EstimatorModels.Designer.cs">
+      <DependentUpon>201810142316569_EstimatorModels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\AccountViewModels.cs" />
     <Compile Include="Models\Account\IdentityModels.cs" />
@@ -288,6 +293,7 @@
     <Compile Include="Models\Diagnostic.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Estimation.cs" />
+    <Compile Include="Models\EstimatorModel.cs" />
     <Compile Include="Models\Home.cs" />
     <Compile Include="Models\MedicalRecord.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -721,6 +727,12 @@
     <Content Include="Views\About\Model.cshtml" />
     <Content Include="Views\About\Contact.cshtml" />
     <Content Include="Views\Diagnostics\Share.cshtml" />
+    <Content Include="Views\EstimatorModels\Create.cshtml" />
+    <Content Include="Views\EstimatorModels\Delete.cshtml" />
+    <Content Include="Views\EstimatorModels\Details.cshtml" />
+    <Content Include="Views\EstimatorModels\Edit.cshtml" />
+    <Content Include="Views\EstimatorModels\Index.cshtml" />
+    <Content Include="Views\EstimatorModels\Upload.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -764,6 +776,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810060236123_estimations.resx">
       <DependentUpon>201810060236123_estimations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810142316569_EstimatorModels.resx">
+      <DependentUpon>201810142316569_EstimatorModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

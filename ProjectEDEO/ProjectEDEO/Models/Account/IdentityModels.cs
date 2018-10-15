@@ -35,6 +35,9 @@ namespace Project_EDEO.Models
         // Used for statistic in About page
         public DbSet<Estimation> Estimations { get; set; }
 
+        // Used to save Estimator Models
+        public DbSet<EstimatorModel> EstimatorModels { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
