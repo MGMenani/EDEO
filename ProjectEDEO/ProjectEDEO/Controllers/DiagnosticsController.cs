@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Project_EDEO.Models;
 using System.Net.Mail;
+using Microsoft.AspNet.Identity;
 
 namespace Project_EDEO.Controllers
 {
@@ -86,7 +87,7 @@ namespace Project_EDEO.Controllers
             {
                 db.Entry(diagnostic).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Details/"+ diagnostic.MedicalRecordID, "MedicalRecords/" );
+                return RedirectToAction("Details/" + diagnostic.MedicalRecordID, "MedicalRecords/");
             }
             return View(diagnostic);
         }
@@ -123,7 +124,18 @@ namespace Project_EDEO.Controllers
             //ViewBag.Numero = db.Users;            
             return View();
         }
-
+        //GetEmail
+        public  string GetEmail()
+        {
+            var IdToSearch  = User.Identity.GetUserId(); 
+            var SearchEmail = db.Users.Where(x=> x.Id.Contains(IdToSearch) || IdToSearch == null).ToList();
+            var email = "";
+            foreach (var item in SearchEmail) {
+                email = item.Email;
+            }
+            
+            return email;
+        }
         // POST: Diagnostics/Share
        
         [HttpPost]
@@ -135,7 +147,7 @@ namespace Project_EDEO.Controllers
                 MailMessage mail = new MailMessage("edeoproject@gmail.com", "edeoproject@gmail.com");
 
                 // More addresses
-                string addresses = "alonsors.809@gmail.com";
+                string addresses = contact.Email;
 
                 foreach (var address in addresses.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries))
                 {

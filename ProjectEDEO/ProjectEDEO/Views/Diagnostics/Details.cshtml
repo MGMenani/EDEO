@@ -27,6 +27,7 @@
                 <div class="col col-md-3"><label class=" form-control-label">Date</label></div>
                 @Html.DisplayFor(model => model.Date)
             </div>
+            
         </form>
     </div>
 </div>
@@ -34,6 +35,6 @@
  
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.DiagnosticID }) |
-    @Html.ActionLink("Back to previous page", null, null, null, new { href = Request.UrlReferrer })
-    @Html.ActionLink("Share", null, null, null, new { href = Request.UrlReferrer })
+    @Html.ActionLink("Back to previous page", null, null, null, new { href = Request.UrlReferrer }) |
+    @Html.ActionLink("Share", "Share",  new { id = Model.MedicalRecordID }, null)
 </p>

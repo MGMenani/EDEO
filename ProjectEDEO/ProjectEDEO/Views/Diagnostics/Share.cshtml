@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Share";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    
 }
 
 <h2>@ViewBag.Numero</h2>
@@ -18,7 +20,7 @@
         </div>
         <div class="col-md-12">
             @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @type = "text", @placeholder = "Asunto" } })
-            @Html.TextAreaFor(model => model.Message, 10, 80, new { @placeholder = "Mensaje" })
+            @Html.TextAreaFor(model => model.Message, 10, 80, new { @placeholder = Html.Action("GetEmail") })
             <button class="site-btn light">Enviar</button>
         </div>
     </div>
