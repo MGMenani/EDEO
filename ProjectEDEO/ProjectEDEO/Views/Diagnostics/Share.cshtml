@@ -3,8 +3,8 @@
 @{
     ViewBag.Title = "Share";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var id = ViewContext.RouteData.Values["id"];
 
-    
 }
 
 <h2>@ViewBag.Numero</h2>
@@ -13,15 +13,16 @@
     @Html.AntiForgeryToken()
     <div class="row">
         <div class="col-md-6">
-            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @type = "text", @placeholder = "Su nombre" } })
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @type = "text", Value = Html.Action("GetEmail") } })
         </div>
         <div class="col-md-6">
             @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @type = "email", @placeholder = "E-mail" } })
         </div>
         <div class="col-md-12">
-            @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @type = "text", @placeholder = "Asunto" } })
-            @Html.TextAreaFor(model => model.Message, 10, 80, new { @placeholder = Html.Action("GetEmail") })
+            @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @type = "text", Value = "Diagnositco" } })
+            @Html.TextAreaFor(model => model.Message, 10, 80, new { @class = "form-control", @type = "submit",  @placeholder = @Html.Action("GetDiagnostic", new { id = id }) })
             <button class="site-btn light">Enviar</button>
+
         </div>
     </div>
 }

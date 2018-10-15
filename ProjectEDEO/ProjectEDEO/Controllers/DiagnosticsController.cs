@@ -136,8 +136,23 @@ namespace Project_EDEO.Controllers
             
             return email;
         }
+
+        //GetDiagnosticAge
+        public string GetDiagnostic(Guid? id)
+        {
+            Diagnostic diagnostic = db.Diagnostics.Find(id);
+            var SearchInfo = db.MedicalRecords.Find(diagnostic.MedicalRecordID);
+            var a = diagnostic.Date.ToString();
+            var b = SearchInfo.Name.ToString();
+            var c = SearchInfo.LastName.ToString();
+            var d = diagnostic.EstimatedAge.ToString();
+            var e = SearchInfo.BornDate.ToString();
+            var Final = "Date: "+ a +"\nName: "+ b + "\nLast Name: " + c + "\nEstimated Age: " + d + "\nBorn Date: " + e + "\n";
+            return Final;
+        }
+
         // POST: Diagnostics/Share
-       
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Share([Bind(Include = "Name,Email,Subject,Message")] Contact contact)
