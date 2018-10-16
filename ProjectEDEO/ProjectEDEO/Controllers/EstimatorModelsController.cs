@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.Mvc;
 using Project_EDEO.Models;
 
@@ -130,7 +132,10 @@ namespace Project_EDEO.Controllers
                 dir.Delete(true);
             }
 
-            Directory.Delete(Server.MapPath(estimatorModel.Directory));
+            if (Directory.Exists(Server.MapPath(estimatorModel.Directory)))
+            {
+                Directory.Delete(Server.MapPath(estimatorModel.Directory));
+            }
 
             db.EstimatorModels.Remove(estimatorModel);
             db.SaveChanges();
@@ -185,6 +190,36 @@ namespace Project_EDEO.Controllers
                     response = exception.Message
                 });
             }
+        }
+
+        public static string Estimate(string imagePath)
+        {
+            // Preparing for a Python call
+            ProcessStartInfo start = new ProcessStartInfo
+            {
+                FileName = "python",
+                Arguments = string.Format("{0} {1} {2}", HostingEnvironment.MapPath("~/Estimator/Default/estimator.py"), imagePath, "male"),
+                UseShellExecute = false,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true
+            };
+
+            // Ready for call
+            string result = "";
+            using (Process process = Process.Start(start))
+            {
+                using (StreamReader reader = process.StandardOutput)
+                {
+                    // Calling
+                    string stderr = process.StandardError.ReadToEnd();
+                    result = reader.ReadToEnd();
+
+                    // If no results
+                    if (result == "")
+                        throw new System.NullReferenceException("Empty result");
+                }
+            }
+            return result;
         }
 
         protected override void Dispose(bool disposing)

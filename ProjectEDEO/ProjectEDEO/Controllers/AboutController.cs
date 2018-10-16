@@ -56,31 +56,10 @@ namespace Project_EDEO.Controllers
                 // Resource path for HTML
                 string sourcePath = "/images/uploads/" + filePath;
 
-                // Preparing for a Python call
-                ProcessStartInfo start = new ProcessStartInfo
-                {
-                    FileName = "python",
-                    Arguments = string.Format("{0} {1} {2}", Server.MapPath("~/Estimator/Default/estimator.py"), imagePath, "male"),
-                    UseShellExecute = false,
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true
-                };
+                // This line calls the fuctions that knows how to estimate and which estimator use
+                string result = EstimatorModelsController.Estimate(imagePath);
 
-                // Ready for call
-                string result = "";
-                using (Process process = Process.Start(start))
-                {
-                    using (StreamReader reader = process.StandardOutput)
-                    {
-                        // Calling
-                        string stderr = process.StandardError.ReadToEnd();
-                        result = reader.ReadToEnd();
-
-                        // If no results
-                        if (result == "")
-                            throw new System.NullReferenceException("Empty result");
-                    }
-                }
+                // Converting age
                 float age = float.Parse(result, System.Globalization.CultureInfo.InvariantCulture.NumberFormat);            
 
                 // Create new entry
