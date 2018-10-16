@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
@@ -237,11 +237,11 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountControllers\AccountController.cs" />
     <Compile Include="Controllers\ApplicationUsersController.cs" />
+    <Compile Include="Controllers\DiagnosticsController.cs" />
     <Compile Include="Controllers\EstimatorModelsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountControllers\ManageController.cs" />
     <Compile Include="Controllers\AccountControllers\MeController.cs" />
-    <Compile Include="Controllers\DiagnosticsController.cs" />
     <Compile Include="Controllers\MedicalRecordsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -289,6 +289,14 @@
     <Compile Include="Migrations\201810160322045_Owner.cs" />
     <Compile Include="Migrations\201810160322045_Owner.Designer.cs">
       <DependentUpon>201810160322045_Owner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810161448164_Chronological.cs" />
+    <Compile Include="Migrations\201810161448164_Chronological.Designer.cs">
+      <DependentUpon>201810161448164_Chronological.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810161455211_Status.cs" />
+    <Compile Include="Migrations\201810161455211_Status.Designer.cs">
+      <DependentUpon>201810161455211_Status.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\AccountViewModels.cs" />
@@ -715,11 +723,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Diagnostics\Create.cshtml" />
-    <Content Include="Views\Diagnostics\Delete.cshtml" />
-    <Content Include="Views\Diagnostics\Details.cshtml" />
-    <Content Include="Views\Diagnostics\Edit.cshtml" />
-    <Content Include="Views\Diagnostics\Index.cshtml" />
     <Content Include="Views\MedicalRecords\Create.cshtml" />
     <Content Include="Views\MedicalRecords\Delete.cshtml" />
     <Content Include="Views\MedicalRecords\Details.cshtml" />
@@ -743,6 +746,11 @@
     <Content Include="Views\ApplicationUsers\Details.cshtml" />
     <Content Include="Views\ApplicationUsers\Edit.cshtml" />
     <Content Include="Views\ApplicationUsers\Index.cshtml" />
+    <Content Include="Views\Diagnostics\Create.cshtml" />
+    <Content Include="Views\Diagnostics\Delete.cshtml" />
+    <Content Include="Views\Diagnostics\Details.cshtml" />
+    <Content Include="Views\Diagnostics\Edit.cshtml" />
+    <Content Include="Views\Diagnostics\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -792,6 +800,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810160322045_Owner.resx">
       <DependentUpon>201810160322045_Owner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810161448164_Chronological.resx">
+      <DependentUpon>201810161448164_Chronological.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810161455211_Status.resx">
+      <DependentUpon>201810161455211_Status.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

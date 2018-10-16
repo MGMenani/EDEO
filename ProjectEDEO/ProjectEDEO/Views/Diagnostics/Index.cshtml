@@ -13,7 +13,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.EstimatedAge)
+            @Html.DisplayNameFor(model => model.MedicalRecord.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChronologicalAge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModelEstimatedAge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DoctorEstimatedAge)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Image)
@@ -22,7 +31,7 @@
             @Html.DisplayNameFor(model => model.Date)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MedicalRecordID)
+            @Html.DisplayNameFor(model => model.UserID)
         </th>
         <th></th>
     </tr>
@@ -30,7 +39,16 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.EstimatedAge)
+            @Html.DisplayFor(modelItem => item.MedicalRecord.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChronologicalAge)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModelEstimatedAge)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DoctorEstimatedAge)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Image)
@@ -39,7 +57,7 @@
             @Html.DisplayFor(modelItem => item.Date)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.MedicalRecordID)
+            @Html.DisplayFor(modelItem => item.UserID)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.DiagnosticID }) |

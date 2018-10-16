@@ -128,9 +128,9 @@ namespace Project_EDEO.Controllers
 
             foreach (var diagnostic in medicalRecord.Diagnostics)
             {
-                csv += diagnostic.EstimatedAge.ToString();
+                csv += diagnostic.ChronologicalAge.ToString();
                 csv += ",";
-                csv += diagnostic.EstimatedAge.ToString();
+                csv += diagnostic.ModelEstimatedAge.ToString();
                 csv += "\r\n";
             }
 

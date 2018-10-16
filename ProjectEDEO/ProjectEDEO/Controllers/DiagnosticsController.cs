@@ -7,8 +7,6 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Project_EDEO.Models;
-using System.Net.Mail;
-using Microsoft.AspNet.Identity;
 
 namespace Project_EDEO.Controllers
 {
@@ -19,7 +17,8 @@ namespace Project_EDEO.Controllers
         // GET: Diagnostics
         public ActionResult Index()
         {
-            return View(db.Diagnostics.ToList());
+            var diagnostics = db.Diagnostics.Include(d => d.MedicalRecord);
+            return View(diagnostics.ToList());
         }
 
         // GET: Diagnostics/Details/5
@@ -40,6 +39,7 @@ namespace Project_EDEO.Controllers
         // GET: Diagnostics/Create
         public ActionResult Create()
         {
+            ViewBag.MedicalRecordID = new SelectList(db.MedicalRecords, "MedicalRecordID", "Name");
             return View();
         }
 
@@ -48,16 +48,17 @@ namespace Project_EDEO.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "DiagnosticID,EstimatedAge,Image,Date,MedicalRecordID")] Diagnostic diagnostic)
+        public ActionResult Create([Bind(Include = "DiagnosticID,ChronologicalAge,ModelEstimatedAge,DoctorEstimatedAge,Image,Date,MedicalRecordID,UserID")] Diagnostic diagnostic)
         {
             if (ModelState.IsValid)
             {
                 diagnostic.DiagnosticID = Guid.NewGuid();
                 db.Diagnostics.Add(diagnostic);
                 db.SaveChanges();
-                return RedirectToAction("Details/" + diagnostic.MedicalRecordID, "MedicalRecords/");
+                return RedirectToAction("Index");
             }
 
+            ViewBag.MedicalRecordID = new SelectList(db.MedicalRecords, "MedicalRecordID", "Name", diagnostic.MedicalRecordID);
             return View(diagnostic);
         }
 
@@ -73,6 +74,7 @@ namespace Project_EDEO.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.MedicalRecordID = new SelectList(db.MedicalRecords, "MedicalRecordID", "Name", diagnostic.MedicalRecordID);
             return View(diagnostic);
         }
 
@@ -81,14 +83,15 @@ namespace Project_EDEO.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "DiagnosticID,EstimatedAge,Image,Date,MedicalRecordID")] Diagnostic diagnostic)
+        public ActionResult Edit([Bind(Include = "DiagnosticID,ChronologicalAge,ModelEstimatedAge,DoctorEstimatedAge,Image,Date,MedicalRecordID,UserID")] Diagnostic diagnostic)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(diagnostic).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Details/" + diagnostic.MedicalRecordID, "MedicalRecords/");
+                return RedirectToAction("Index");
             }
+            ViewBag.MedicalRecordID = new SelectList(db.MedicalRecords, "MedicalRecordID", "Name", diagnostic.MedicalRecordID);
             return View(diagnostic);
         }
 
@@ -115,85 +118,7 @@ namespace Project_EDEO.Controllers
             Diagnostic diagnostic = db.Diagnostics.Find(id);
             db.Diagnostics.Remove(diagnostic);
             db.SaveChanges();
-            return RedirectToAction("Details/" + diagnostic.MedicalRecordID, "MedicalRecords/");
-        }
-
-        // GET: Diagnostics/Share
-        public ActionResult Share()
-        {
-            //ViewBag.Numero = db.Users;            
-            return View();
-        }
-        //GetEmail
-        public  string GetEmail()
-        {
-            var IdToSearch  = User.Identity.GetUserId(); 
-            var SearchEmail = db.Users.Where(x=> x.Id.Contains(IdToSearch) || IdToSearch == null).ToList();
-            var email = "";
-            foreach (var item in SearchEmail) {
-                email = item.Email;
-            }
-            
-            return email;
-        }
-
-        //GetDiagnosticAge
-        public string GetDiagnostic(Guid? id)
-        {
-            Diagnostic diagnostic = db.Diagnostics.Find(id);
-            var SearchInfo = db.MedicalRecords.Find(diagnostic.MedicalRecordID);
-            var a = diagnostic.Date.ToString();
-            var b = SearchInfo.Name.ToString();
-            var c = SearchInfo.LastName.ToString();
-            var d = diagnostic.EstimatedAge.ToString();
-            var e = SearchInfo.BornDate.ToString();
-            var Final = " Diagnostic date: "+ a +", \nName: "+ b + ", \nLast Name: " + c + ", \nEstimated Age: " + d + " months, \nBorn Date: " + e + " \n";
-            ViewBag.idSharediagnostic = id;
-            return Final;
-        }
-
-        // POST: Diagnostics/Share
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Share([Bind(Include = "Name,Email,Subject,Message")] Contact contact)
-        {
-            if (ModelState.IsValid)
-            {
-                MailMessage mail = new MailMessage("edeoproject@gmail.com", "edeoproject@gmail.com");
-
-                // More addresses
-                string addresses = contact.Email;
-
-                foreach (var address in addresses.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries))
-                {
-                    mail.To.Add(address);
-                }
-
-                SmtpClient client = new SmtpClient
-                {
-                    Port = 587,
-                    Host = "smtp.gmail.com",
-                    Credentials = new System.Net.NetworkCredential("edeoproject@gmail.com", "edeoboneage18"),
-                    EnableSsl = true
-                };
-
-                // Mail body
-                mail.Subject = "[EDEO] - " + contact.Subject;
-                string[] words = contact.Message.Split(',');
-                string FinalMessage = "";
-                foreach (string word in words)
-                {
-                    FinalMessage+=word;
-                    FinalMessage += "\n";
-                }
-                mail.Body = "From: " + contact.Name + " \nTo: " + contact.Email + " " + "\n\n" + FinalMessage;
-                client.Send(mail);
-                string Forum = (string)this.RouteData.Values["Forum"];
-                return RedirectToAction("", "MedicalRecords/");
-            }
-
-            return View();
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

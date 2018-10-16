@@ -5,36 +5,71 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="card">
-    <div class="card-header">
-        <strong>Basic Form</strong> Elements
-    </div>
-    <div class="card-body card-block">
-        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-            <div class="row form-group">
-                <div class="col col-md-3"><label class=" form-control-label">Estimated Age</label></div>
-                @Html.DisplayFor(model => model.EstimatedAge)
-            </div>
-            <div class="row form-group">
-                <div class="col col-md-3"><label class=" form-control-label">Image</label></div>
-                @Html.DisplayFor(model => model.Image)
-            </div>
-            <div class="row form-group">
-                <div class="col col-md-3"><label class=" form-control-label">ID</label></div>
-                @Html.DisplayFor(model => model.MedicalRecordID)
-            </div>
-            <div class="row form-group">
-                <div class="col col-md-3"><label class=" form-control-label">Date</label></div>
-                @Html.DisplayFor(model => model.Date)
-            </div>
-            
-        </form>
-    </div>
-</div>
+<h2>Details</h2>
 
- 
+<div>
+    <h4>Diagnostic</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MedicalRecord.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MedicalRecord.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChronologicalAge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChronologicalAge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModelEstimatedAge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModelEstimatedAge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DoctorEstimatedAge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DoctorEstimatedAge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserID)
+        </dd>
+
+    </dl>
+</div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.DiagnosticID }) |
-    @Html.ActionLink("Back to previous page", null, null, null, new { href = Request.UrlReferrer }) |
-    @Html.ActionLink("Share", "Share",  new { id = Model.DiagnosticID }, null)
+    @Html.ActionLink("Back to List", "Index")
 </p>

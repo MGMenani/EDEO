@@ -13,11 +13,35 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.EstimatedAge)
+            @Html.DisplayNameFor(model => model.MedicalRecord.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.EstimatedAge)
+            @Html.DisplayFor(model => model.MedicalRecord.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChronologicalAge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChronologicalAge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModelEstimatedAge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModelEstimatedAge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DoctorEstimatedAge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DoctorEstimatedAge)
         </dd>
 
         <dt>
@@ -37,11 +61,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.MedicalRecordID)
+            @Html.DisplayNameFor(model => model.UserID)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MedicalRecordID)
+            @Html.DisplayFor(model => model.UserID)
         </dd>
 
     </dl>
