@@ -147,7 +147,8 @@ namespace Project_EDEO.Controllers
             var c = SearchInfo.LastName.ToString();
             var d = diagnostic.EstimatedAge.ToString();
             var e = SearchInfo.BornDate.ToString();
-            var Final = "Date: "+ a +"\nName: "+ b + "\nLast Name: " + c + "\nEstimated Age: " + d + "\nBorn Date: " + e + "\n";
+            var Final = " Diagnostic date: "+ a +", \nName: "+ b + ", \nLast Name: " + c + ", \nEstimated Age: " + d + " months, \nBorn Date: " + e + " \n";
+            ViewBag.idSharediagnostic = id;
             return Final;
         }
 
@@ -179,10 +180,17 @@ namespace Project_EDEO.Controllers
 
                 // Mail body
                 mail.Subject = "[EDEO] - " + contact.Subject;
-                mail.Body = "From " + contact.Name + " <" + contact.Email + ">" + "\n\n" + contact.Message;
+                string[] words = contact.Message.Split(',');
+                string FinalMessage = "";
+                foreach (string word in words)
+                {
+                    FinalMessage+=word;
+                    FinalMessage += "\n";
+                }
+                mail.Body = "From: " + contact.Name + " \nTo: " + contact.Email + " " + "\n\n" + FinalMessage;
                 client.Send(mail);
-
-                return RedirectToAction("Index");
+                string Forum = (string)this.RouteData.Values["Forum"];
+                return RedirectToAction("", "MedicalRecords/");
             }
 
             return View();
