@@ -6,18 +6,28 @@
 
 @Styles.Render("~/Content/dropzone-css")
 
-<h2>Upload</h2>
-
-@using (Html.BeginForm("Upload", "EstimatorModels", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "dropzone needsclick dz-clickable", @id = "dropzone-form" }))
-{
+<div class="card">
+    @using (Html.BeginForm("Upload", "EstimatorModels", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "dropzone needsclick dz-clickable", @id = "dropzone-form" }))
+    {
     <div class="dz-message needsclick">
         <i class="fa fa-upload fa-5x" aria-hidden="true"></i>
-        <br>
-        <p>Arrastre y suelte una imágen en esta sección</p>
+        <br />
+        <br />
+        <p>Drag &amp Drop your Python files and weights here</p>
+        <br />
+        <p>or clic here to select them manually</p>
+        <br />
+        <p>(10 files max)</p>
     </div>
-}
+    }
+</div>
+
+<div>
+    <a href=@Url.Action("Index", "EstimatorModels") class="btn btn-success" type="button">Finish</a>
+</div>
 
 @section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/dropzone")
     <script src="~/assets/js/lib/chosen/chosen.jquery.min.js"></script>
     <script type="text/javascript">
@@ -25,9 +35,8 @@
             method: "POST",
             paramName: "files",
             uploadMultiple: true,
-            maxFiles: 5,
-            maxFilesize: 20,
-            dictMaxFilesExceeded: "Solo una imágen por estimación es posible",
+            maxFiles: 10,
+            maxFilesize: 20
         };
     </script>
 }

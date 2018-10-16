@@ -5,56 +5,70 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<link rel="stylesheet" href="assets/css/lib/datatable/dataTables.bootstrap.min.css">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PythonFile)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Active)
-        </th>
-        <th></th>
-    </tr>
+<div class="card">
+    <div class="card-header">
+        <strong class="card-title">Medical Records</strong>
+        <a href=@Url.Action("Create", "EstimatorModels") class="btn btn-primary btn-sm pull-right">Create New</a>
+    </div>
+    <div class="card-body">
+        <table id="bootstrap-data-table" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Main file</th>
+                    <th>Date time</th>
+                    <th>Active?</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PythonFile)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Active)
+                        </td>
+                        <td>
+                            @if (item.Active)
+                            {
+                                @Html.ActionLink("Deactivate", "Deactivate", new { id = item.EstimatorModelID })
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Activate", "Activate", new { id = item.EstimatorModelID })
+                            }
+                            |
+                            @Html.ActionLink("Details", "Details", new { id = item.EstimatorModelID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.EstimatorModelID })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PythonFile)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Active)
-        </td>
-        <td>
-            @if (item.Active)
-            {
-                @Html.ActionLink("Deactivate", "Deactivate", new { id = item.EstimatorModelID })
-            }
-            else
-            {
-                @Html.ActionLink("Activate", "Activate", new { id = item.EstimatorModelID })
-            }
-            |
-            @Html.ActionLink("Details", "Details", new { id = item.EstimatorModelID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.EstimatorModelID })
-        </td>
-    </tr>
+@section Scripts {
+    <script src="assets/js/lib/data-table/datatables.min.js"></script>
+    <script src="assets/js/lib/data-table/dataTables.bootstrap.min.js"></script>
+    <script src="assets/js/lib/data-table/dataTables.buttons.min.js"></script>
+    <script src="assets/js/lib/data-table/buttons.bootstrap.min.js"></script>
+    <script src="assets/js/lib/data-table/jszip.min.js"></script>
+    <script src="assets/js/lib/data-table/pdfmake.min.js"></script>
+    <script src="assets/js/lib/data-table/vfs_fonts.js"></script>
+    <script src="assets/js/lib/data-table/buttons.html5.min.js"></script>
+    <script src="assets/js/lib/data-table/buttons.print.min.js"></script>
+    <script src="assets/js/lib/data-table/buttons.colVis.min.js"></script>
+    <script src="assets/js/lib/data-table/datatables-init.js"></script>
 }
-
-</table>

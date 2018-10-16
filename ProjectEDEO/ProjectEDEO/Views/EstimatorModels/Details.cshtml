@@ -5,55 +5,43 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="card">
+    <div class="card-header">
+        <strong>Details of a</strong> medical record
+    </div>
+    <div class="card-body card-block">
+        <div class="row form-group">
+            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Name</label></div>
+            <div class="col-12 col-md-9">
+                @Html.DisplayFor(model => model.Name, new { htmlAttributes = new { @class = "form-control-static" } })
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Main file</label></div>
+            <div class="col-12 col-md-9">
+                @Html.DisplayFor(model => model.PythonFile, new { htmlAttributes = new { @class = "form-control-static" } })
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Date time</label></div>
+            <div class="col-12 col-md-9">
+                @Html.DisplayFor(model => model.DateTime, new { htmlAttributes = new { @class = "form-control-static" } })
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Active?</label></div>
+            <div class="col-12 col-md-9">
+                @Html.DisplayFor(model => model.Active, new { htmlAttributes = new { @class = "form-control-static" } })
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <a href=@Url.Action("Edit", "EstimatorModels", new { id = Model.EstimatorModelID }) class="btn btn-secondary btn-sm" type="button">
+            <i class="fa fa-pencil"></i> Edit
+        </a>
+    </div>
+</div>
 
 <div>
-    <h4>EstimatorModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Directory)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Directory)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PythonFile)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PythonFile)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Active)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Active)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateTime)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateTime)
-        </dd>
-
-    </dl>
+    <a href=@Url.Action("Index", "EstimatorModels") class="btn btn-outline-secondary" type="button">Back to list</a>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.EstimatorModelID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
