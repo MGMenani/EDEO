@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace Project_EDEO.Models
     public class ApplicationUser : IdentityUser
     {
         public string Name { get; set; }
+        public Guid? Owner { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

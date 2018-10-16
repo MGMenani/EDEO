@@ -285,6 +285,10 @@
     <Compile Include="Migrations\201810142316569_EstimatorModels.Designer.cs">
       <DependentUpon>201810142316569_EstimatorModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810160322045_Owner.cs" />
+    <Compile Include="Migrations\201810160322045_Owner.Designer.cs">
+      <DependentUpon>201810160322045_Owner.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\AccountViewModels.cs" />
     <Compile Include="Models\Account\IdentityModels.cs" />
@@ -779,6 +783,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810142316569_EstimatorModels.resx">
       <DependentUpon>201810142316569_EstimatorModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810160322045_Owner.resx">
+      <DependentUpon>201810160322045_Owner.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
