@@ -4,8 +4,10 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using Project_EDEO.Models;
 
 namespace Project_EDEO.Controllers
@@ -18,7 +20,8 @@ namespace Project_EDEO.Controllers
         public ActionResult Index()
         {
             var diagnostics = db.Diagnostics.Include(d => d.MedicalRecord);
-            return View(diagnostics.ToList());
+            string user = User.Identity.GetUserId();
+            return View(diagnostics.Where(d => d.UserID == user).ToList());
         }
 
         // GET: Diagnostics/Details/5
@@ -53,6 +56,7 @@ namespace Project_EDEO.Controllers
             if (ModelState.IsValid)
             {
                 diagnostic.DiagnosticID = Guid.NewGuid();
+                diagnostic.UserID = User.Identity.GetUserId();
                 db.Diagnostics.Add(diagnostic);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -87,6 +91,7 @@ namespace Project_EDEO.Controllers
         {
             if (ModelState.IsValid)
             {
+                diagnostic.UserID = User.Identity.GetUserId();
                 db.Entry(diagnostic).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -119,6 +124,85 @@ namespace Project_EDEO.Controllers
             db.Diagnostics.Remove(diagnostic);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        // GET: Diagnostics/Share
+        public ActionResult Share()
+        {
+            //ViewBag.Numero = db.Users;            
+            return View();
+        }
+        // GetEmail
+        public string GetEmail()
+        {
+            var IdToSearch = User.Identity.GetUserId();
+            var SearchEmail = db.Users.Where(x => x.Id.Contains(IdToSearch) || IdToSearch == null).ToList();
+            var email = "";
+            foreach (var item in SearchEmail)
+            {
+                email = item.Email;
+            }
+
+            return email;
+        }
+
+        //GetDiagnosticAge
+        public string GetDiagnostic(Guid? id)
+        {
+            Diagnostic diagnostic = db.Diagnostics.Find(id);
+            var SearchInfo = db.MedicalRecords.Find(diagnostic.MedicalRecordID);
+            var a = diagnostic.Date.ToString();
+            var b = SearchInfo.Name.ToString();
+            var c = SearchInfo.LastName.ToString();
+            var d = diagnostic.ModelEstimatedAge.ToString();
+            var e = SearchInfo.BornDate.ToString();
+            var Final = " Diagnostic date: " + a + ", \nName: " + b + ", \nLast Name: " + c + ", \nEstimated Age: " + d + " months, \nBorn Date: " + e + " \n";
+            ViewBag.idSharediagnostic = id;
+            return Final;
+        }
+
+        // POST: Diagnostics/Share
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Share([Bind(Include = "Name,Email,Subject,Message")] Contact contact)
+        {
+            if (ModelState.IsValid)
+            {
+                MailMessage mail = new MailMessage("edeoproject@gmail.com", "edeoproject@gmail.com");
+
+                // More addresses
+                string addresses = contact.Email;
+
+                foreach (var address in addresses.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    mail.To.Add(address);
+                }
+
+                SmtpClient client = new SmtpClient
+                {
+                    Port = 587,
+                    Host = "smtp.gmail.com",
+                    Credentials = new System.Net.NetworkCredential("edeoproject@gmail.com", "edeoboneage18"),
+                    EnableSsl = true
+                };
+
+                // Mail body
+                mail.Subject = "[EDEO] - " + contact.Subject;
+                string[] words = contact.Message.Split(',');
+                string FinalMessage = "";
+                foreach (string word in words)
+                {
+                    FinalMessage += word;
+                    FinalMessage += "\n";
+                }
+                mail.Body = "From: " + contact.Name + " \nTo: " + contact.Email + " " + "\n\n" + FinalMessage;
+                client.Send(mail);
+                string Forum = (string)this.RouteData.Values["Forum"];
+                return RedirectToAction("", "MedicalRecords/");
+            }
+
+            return View();
         }
 
         protected override void Dispose(bool disposing)
