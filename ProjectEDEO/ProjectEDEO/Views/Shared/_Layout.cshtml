@@ -51,6 +51,18 @@
                     <li>
                         <a href="@Url.Action("Index", "Validations")"><i class="menu-icon fa fa-area-chart"></i>Validations</a>
                     </li>
+                    @if (User.IsInRole("Admin") || User.IsInRole("Superuser"))
+                    {
+                        <li>
+                            <a href="@Url.Action("Index", "ApplicationUsers")"><i class="menu-icon fa fa-group"></i>Users</a>
+                        </li>
+                    }
+                    @if (User.IsInRole("Superuser"))
+                    {
+                        <li>
+                            <a href="@Url.Action("Index", "EstimatorModels")"><i class="menu-icon fa fa-gears"></i>Estimators</a>
+                        </li>
+                    }
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
