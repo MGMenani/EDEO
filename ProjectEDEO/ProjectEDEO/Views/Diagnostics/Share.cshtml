@@ -4,25 +4,26 @@
     ViewBag.Title = "Share";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var id = ViewContext.RouteData.Values["id"];
+    
 
 }
 
 <h2>@ViewBag.Numero</h2>
-@using (Html.BeginForm("Share", "Diagnostics", null, FormMethod.Post, new { @class = "contact-form" }))
+@using (Html.BeginForm("Share", "Diagnostics", id, FormMethod.Post, new { @class = "contact-form" }))
 {
     @Html.AntiForgeryToken()
     <div class="row">
-        <div class="col-md-6">
-            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @type = "text", Value = Html.Action("GetEmail") } })
+        <div class="col-md-2">
+           Tu correo: @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @type = "text", style = "width:1300px", Value = Html.Action("GetEmail") } })
+        
+           Correo a enviar: @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @type = "email", style = "width:1300px", @placeholder = "E-mail" } })
+        
+           Asunto: @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @type = "text", style = "width:1300px", Value = "Diagnositco" } })
+        
+           Diagnostico: @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @type = "text", style = "width:1300px", Value = @Html.Action("GetDiagnostic", new { id = id }) } })
         </div>
-        <div class="col-md-6">
-            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @type = "email", @placeholder = "E-mail" } })
-        </div>
-        <div class="col-md-12">
-            @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @type = "text", Value = "Diagnositco" } })
-            @Html.TextAreaFor(model => model.Message, 10, 80, new { @class = "form-control", @type = "submit",  @placeholder = @Html.Action("GetDiagnostic", new { id = id }) })
-            <button class="site-btn light">Enviar</button>
-
-        </div>
+        
     </div>
+    <br />
+    <button class="site-btn light">Enviar</button>
 }
