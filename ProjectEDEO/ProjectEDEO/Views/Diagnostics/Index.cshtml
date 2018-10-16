@@ -5,66 +5,71 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.MedicalRecord.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChronologicalAge)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModelEstimatedAge)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DoctorEstimatedAge)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserID)
-        </th>
-        <th></th>
-    </tr>
+<link rel="stylesheet" href="assets/css/lib/datatable/dataTables.bootstrap.min.css">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.MedicalRecord.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChronologicalAge)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModelEstimatedAge)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DoctorEstimatedAge)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Image)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserID)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DiagnosticID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DiagnosticID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DiagnosticID })
-        </td>
-    </tr>
+<div class="card">
+    <div class="card-header">
+        <strong class="card-title">Medical Records</strong>
+        <a href=@Url.Action("Create", "Diagnostics") class="btn btn-primary btn-sm pull-right">Create New</a>
+    </div>
+    <div class="card-body">
+        <table id="bootstrap-data-table" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Chronological age</th>
+                    <th>Model estimation</th>
+                    <th>Doctor estimation</th>
+                    <th>Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Image)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MedicalRecord.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ChronologicalAge)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ModelEstimatedAge)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DoctorEstimatedAge)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.DiagnosticID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.DiagnosticID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.DiagnosticID })
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/assets/js/lib/data-table/datatables.min.js"></script>
+    <script src="~/assets/js/lib/data-table/dataTables.bootstrap.min.js"></script>
+    <script src="~/assets/js/lib/data-table/dataTables.buttons.min.js"></script>
+    <script src="~/assets/js/lib/data-table/buttons.bootstrap.min.js"></script>
+    <script src="~/assets/js/lib/data-table/jszip.min.js"></script>
+    <script src="~/assets/js/lib/data-table/pdfmake.min.js"></script>
+    <script src="~/assets/js/lib/data-table/vfs_fonts.js"></script>
+    <script src="~/assets/js/lib/data-table/buttons.html5.min.js"></script>
+    <script src="~/assets/js/lib/data-table/buttons.print.min.js"></script>
+    <script src="~/assets/js/lib/data-table/buttons.colVis.min.js"></script>
+    <script src="~/assets/js/lib/data-table/datatables-init.js"></script>
 }
-
-</table>

@@ -5,71 +5,61 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="card">
+    <div class="card-header">
+        <strong>Details of a</strong> medical record
+    </div>
+    <div class="card-body card-block">
+        <div class="row form-group">
+            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Name</label></div>
+            <div class="col-12 col-md-9">
+                @Html.DisplayFor(model => model.MedicalRecord.Name, new { htmlAttributes = new { @class = "form-control-static" } })
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Last name</label></div>
+            <div class="col-12 col-md-9">
+                @Html.DisplayFor(model => model.MedicalRecord.LastName, new { htmlAttributes = new { @class = "form-control-static" } })
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Date</label></div>
+            <div class="col-12 col-md-9">
+                @Html.DisplayFor(model => model.Date, new { htmlAttributes = new { @class = "form-control-static" } })
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Chronical age</label></div>
+            <div class="col-12 col-md-9">
+                @Html.DisplayFor(model => model.ChronologicalAge, new { htmlAttributes = new { @class = "form-control-static" } })
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Model estimation</label></div>
+            <div class="col-12 col-md-9">
+                @Html.DisplayFor(model => model.ModelEstimatedAge, new { htmlAttributes = new { @class = "form-control-static" } })
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Doctor's estimation</label></div>
+            <div class="col-12 col-md-9">
+                @Html.DisplayFor(model => model.DoctorEstimatedAge, new { htmlAttributes = new { @class = "form-control-static" } })
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Image</label></div>
+            <div class="col-12 col-md-9">
+                @Html.DisplayFor(model => model.Image, new { htmlAttributes = new { @class = "form-control-static" } })
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <a href=@Url.Action("Edit", "Diagnostics", new { id = Model.MedicalRecordID }) class="btn btn-secondary btn-sm" type="button">
+            <i class="fa fa-pencil"></i> Edit
+        </a>
+    </div>
+</div>
 
 <div>
-    <h4>Diagnostic</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.MedicalRecord.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MedicalRecord.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ChronologicalAge)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ChronologicalAge)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ModelEstimatedAge)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ModelEstimatedAge)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DoctorEstimatedAge)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DoctorEstimatedAge)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UserID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserID)
-        </dd>
-
-    </dl>
+    <a href=@Url.Action("Index", "Diagnostics") class="btn btn-outline-secondary" type="button">Back to list</a>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.DiagnosticID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
