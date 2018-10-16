@@ -142,6 +142,37 @@ namespace Project_EDEO.Controllers
             return RedirectToAction("Index");
         }
 
+        // GET: EstimatorModels/Activate/5
+        public ActionResult Activate(Guid id)
+        {
+            foreach (var Estimator in db.EstimatorModels.Where(e => e.Active == true))
+            {
+                Estimator.Active = false;
+                db.Entry(Estimator).State = EntityState.Modified;
+            }
+            db.SaveChanges();
+
+            EstimatorModel estimatorModel = db.EstimatorModels.Find(id);
+            estimatorModel.Active = true;
+
+            db.Entry(estimatorModel).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        // GET: EstimatorModels/Deactivate/5
+        public ActionResult Deactivate(Guid id)
+        {
+            EstimatorModel estimatorModel = db.EstimatorModels.Find(id);
+            estimatorModel.Active = false;
+
+            db.Entry(estimatorModel).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
         // GET: EstimatorModels/Upload
         public ActionResult Upload(Guid? id)
         {
@@ -192,13 +223,24 @@ namespace Project_EDEO.Controllers
             }
         }
 
-        public static string Estimate(string imagePath)
+        public string Estimate(string imagePath)
         {
+            // Default running file
+            string runningPath = "~/Estimator/Default/estimator.py";
+
+            // Finding the active estimator
+            IQueryable<EstimatorModel> estimatorModels = db.EstimatorModels.Where(e => e.Active == true);
+            if (estimatorModels.LongCount() != 0)
+            {
+                var estimatorModel = estimatorModels.First();
+                runningPath = Path.Combine(estimatorModel.Directory, estimatorModel.PythonFile);
+            }
+
             // Preparing for a Python call
             ProcessStartInfo start = new ProcessStartInfo
             {
                 FileName = "python",
-                Arguments = string.Format("{0} {1} {2}", HostingEnvironment.MapPath("~/Estimator/Default/estimator.py"), imagePath, "male"),
+                Arguments = string.Format("{0} {1} {2}", HostingEnvironment.MapPath(runningPath), imagePath, "male"),
                 UseShellExecute = false,
                 RedirectStandardOutput = true,
                 RedirectStandardError = true

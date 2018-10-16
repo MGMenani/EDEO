@@ -57,7 +57,8 @@ namespace Project_EDEO.Controllers
                 string sourcePath = "/images/uploads/" + filePath;
 
                 // This line calls the fuctions that knows how to estimate and which estimator use
-                string result = EstimatorModelsController.Estimate(imagePath);
+                EstimatorModelsController estimatorModelsController = new EstimatorModelsController();
+                string result = estimatorModelsController.Estimate(imagePath);
 
                 // Converting age
                 float age = float.Parse(result, System.Globalization.CultureInfo.InvariantCulture.NumberFormat);            
