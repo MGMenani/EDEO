@@ -11,11 +11,12 @@ namespace Project_EDEO.Models
     {
         public Guid DiagnosticID { get; set; }
 
-  
-        public int EstimatedAge { get; set; }
+        public int ChronologicalAge { get; set; }
+        public int ModelEstimatedAge { get; set; }
+        public int DoctorEstimatedAge { get; set; }
 
         // For image routes
-     
+
         public string Image { set; get; }
 
         [Column(TypeName = "Date")]
@@ -25,5 +26,9 @@ namespace Project_EDEO.Models
         
         public Guid MedicalRecordID { get; set; }
         public virtual MedicalRecord MedicalRecord { set; get; }
+
+        // FK to entity owner (AKA Logged in user)
+        public string UserID { get; set; }
+        public virtual ApplicationUser User { get; set; }
     }
 }
