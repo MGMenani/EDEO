@@ -87,6 +87,9 @@ namespace Project_EDEO.Models
 
         [Display(Name = "Name")]
         public string Name { get; set; }
+
+        [Display(Name = "PhoneNumber")]
+        public string PhoneNumber { get; set; }
     }
 
     public class ResetPasswordViewModel

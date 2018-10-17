@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
@@ -297,6 +297,14 @@
     <Compile Include="Migrations\201810161455211_Status.cs" />
     <Compile Include="Migrations\201810161455211_Status.Designer.cs">
       <DependentUpon>201810161455211_Status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810170128032_phone.cs" />
+    <Compile Include="Migrations\201810170128032_phone.Designer.cs">
+      <DependentUpon>201810170128032_phone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810170142338_phone1.cs" />
+    <Compile Include="Migrations\201810170142338_phone1.Designer.cs">
+      <DependentUpon>201810170142338_phone1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\AccountViewModels.cs" />
@@ -806,6 +814,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810161455211_Status.resx">
       <DependentUpon>201810161455211_Status.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810170128032_phone.resx">
+      <DependentUpon>201810170128032_phone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810170142338_phone1.resx">
+      <DependentUpon>201810170142338_phone1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
