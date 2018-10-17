@@ -40,8 +40,18 @@ namespace Project_EDEO.Controllers
         }
 
         // GET: Diagnostics/Create
-        public ActionResult Create()
+        //public ActionResult Create()
+        //{
+        //    ViewBag.MedicalRecordID = new SelectList(db.MedicalRecords, "MedicalRecordID", "Name");
+        //    return View();
+        //}
+
+        // GET: Diagnostics/Create
+        public ActionResult Create(int age, string image, string pre)
         {
+            ViewBag.Age = age;
+            ViewBag.Image = image;
+            ViewBag.Pre = pre;
             ViewBag.MedicalRecordID = new SelectList(db.MedicalRecords, "MedicalRecordID", "Name");
             return View();
         }

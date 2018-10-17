@@ -16,8 +16,8 @@ namespace Project_EDEO.Models
         public int DoctorEstimatedAge { get; set; }
 
         // For image routes
-     
-        public string Image { set; get; }
+        public string Image { get; set; }
+        public string Prosseced { get; set; }
 
         [Column(TypeName = "Date")]
         public DateTime Date { get; set; }

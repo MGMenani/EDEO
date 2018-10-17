@@ -3,8 +3,7 @@
 }
 @section Scripts {
     @Scripts.Render("~/bundles/dropzone")
-    <script src="assets/js/lib/chosen/chosen.jquery.min.js"></script>
-    <link rel="stylesheet" href="assets/css/lib/chosen/chosen.min.css">
+    <script src="~/assets/js/lib/chosen/chosen.jquery.min.js"></script>
     <script>
         jQuery(document).ready(function () {
             jQuery(".standardSelect").chosen({
@@ -15,12 +14,41 @@
         });
     </script>
     <script type="text/javascript">
+        function displayLoading() {
+            $('#dropzone').hide();
+            $('#loading').show();
+        };
+
+        function showResults(image, age) {
+            $('#loading').hide();
+            $('#results').show();
+            $('#age').html(age);
+            $('#image').html('<img src="' + image + '" height="300" />');
+        };
+
         Dropzone.options.dropzoneForm = {
+            method: "POST",
             paramName: "file",
-            maxFilesize: 20,
+            uploadMultiple: false,
             maxFiles: 1,
+            maxFilesize: 20,
+            capture: "camera",
             acceptedFiles: "image/*",
-            dictMaxFilesExceeded: "Only 1 image per estimation is possible",
+            dictMaxFilesExceeded: "Solo una imágen por estimación es posible",
+            init: function () {
+                this.on("sending", function (file) {
+                    displayLoading();
+                });
+                this.on("error", function (file) {
+                    $('#results').html("<p>Something went wrong :(</p>");
+                });
+                this.on("success", function (file, response) {
+                    var image = response['image']
+                    var age = response['estimation']
+                    showResults(image, age);
+                    this.removeFile(file);
+                });
+            }
         };
     </script>
 }

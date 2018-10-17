@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Project_EDEO.Models;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -10,79 +12,64 @@ namespace Project_EDEO.Controllers
 {
     public class HomeController : Controller
     {
-
-        public int imageGui = 5;
-        bool flag = false;
-        string filePath = "1377.png";
-        string pythonPath = @"python";
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         public ActionResult Index()
         {
             // Check if the user is not logged in
             if (!User.Identity.IsAuthenticated)
             {
+                ViewBag.Age = 0;
+                ViewBag.Image = "";
+                ViewBag.Pre = "";
+
                 // Redirect to the About landing page
                 return RedirectToAction("Index", "About");
             }
 
             // Loqueras de Michael xD
-            ViewBag.flagvalue = flag;
             ViewBag.Image = "";
             return View();
         }
 
+        // POST: About/Estimate
         [HttpPost]
-        public ActionResult Index(FormCollection frm)
-        {
-            flag = true;   //To know if there is a loaded image 
-            ViewBag.flagvalue = flag;
-
-            if (filePath != "")
-            {
-                string imagePath = Path.Combine(Server.MapPath("~/images/uploads"), filePath);
-
-                //llama la función de python
-                ProcessStartInfo start = new ProcessStartInfo();
-                start.FileName = pythonPath;
-                start.Arguments = string.Format("{0} {1} {2}", Server.MapPath("~/Estimator/Default/estimator.py"), imagePath + "", "male"); //Path to .py file and any cmd line args
-                start.UseShellExecute = false;
-                start.RedirectStandardOutput = true;
-                start.RedirectStandardError = true;
-
-                string result = "";                                //Resultado de python
-                using (Process process = Process.Start(start))
-                {
-                    using (StreamReader reader = process.StandardOutput)
-                    {
-                        string stderr = process.StandardError.ReadToEnd();
-                        result = reader.ReadToEnd();
-                        if (result != "")
-                        {
-                            result = cortarString(result);
-                            ViewBag.Estimation = result + " meses.";
-                        }
-                        else
-                            ViewBag.Estimation = stderr;
-
-                        ViewBag.Image = "~/images/uploads/" + filePath;
-                    }
-                }
-            }
-            else
-            {
-                ViewBag.Estimation = "Debe ingresar una imagen";
-            }
-
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult FileUpload(HttpPostedFileBase file)
+        public ActionResult Estimate(HttpPostedFileBase file)
         {
             try
             {
+                // Giving new name and saving to disk
                 string filePath = Guid.NewGuid() + Path.GetExtension(file.FileName);
                 file.SaveAs(Path.Combine(Server.MapPath("~/images/uploads"), filePath));
+
+                // Server path for processing
+                string imagePath = Path.Combine(Server.MapPath("~/images/uploads"), filePath);
+
+                // Resource path for HTML
+                string sourcePath = "/images/uploads/" + filePath;
+
+                // ACÁ SE PREPROCESA LA BOMBA Y SE AGARRA EL LINK DEL BICHILLO
+
+                // This line calls the fuctions that knows how to estimate and which estimator use
+                EstimatorModelsController estimatorModelsController = new EstimatorModelsController();
+                string result = estimatorModelsController.Estimate(imagePath);
+
+                // Converting age
+                float age = float.Parse(result, System.Globalization.CultureInfo.InvariantCulture.NumberFormat);
+
+                ViewBag.Age = (int)age;
+                ViewBag.Image = sourcePath;
+                ViewBag.Pre = sourcePath;
+
+                // Returning JSON
+                return Json(new
+                {
+                    success = true,
+                    response = "File uploaded",
+                    image = sourcePath,
+                    preprocess = sourcePath,
+                    estimation = age
+                });
             }
             catch (Exception exception)
             {
@@ -92,29 +79,6 @@ namespace Project_EDEO.Controllers
                     response = exception.Message
                 });
             }
-
-            return Json(new
-            {
-                success = true,
-                response = "File uploaded."
-            });
-        }
-
-        //Cuts python return to delete garbage data.
-        protected string cortarString(string s)
-        {
-            char[] arrayResult = { };                          //Utilizado para voltear el resultado y cortar lo innecesario
-            int endString = 0;                                 //Saber cuántos caracteres sirven en el resultado
-
-            arrayResult = s.ToCharArray().Reverse().ToArray(); //Se pasa el string a array y se voltea
-            s = new string(arrayResult);                       //se pasa el array a string
-            endString = s.IndexOf("p");                        //cantidad de caracteres útiles
-            s = s.Substring(0, endString);                        //Corta lo necesario
-            //Ahora a voltearlo de nuevo
-            arrayResult = s.ToCharArray().Reverse().ToArray();
-            s = new string(arrayResult);
-
-            return s;
         }
     }
 }

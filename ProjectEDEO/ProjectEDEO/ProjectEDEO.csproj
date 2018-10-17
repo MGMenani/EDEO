@@ -306,6 +306,10 @@
     <Compile Include="Migrations\201810170142338_phone1.Designer.cs">
       <DependentUpon>201810170142338_phone1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810172154322_PreprocessedDiagnostic.cs" />
+    <Compile Include="Migrations\201810172154322_PreprocessedDiagnostic.Designer.cs">
+      <DependentUpon>201810172154322_PreprocessedDiagnostic.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\AccountViewModels.cs" />
     <Compile Include="Models\Account\IdentityModels.cs" />
@@ -821,6 +825,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810170142338_phone1.resx">
       <DependentUpon>201810170142338_phone1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810172154322_PreprocessedDiagnostic.resx">
+      <DependentUpon>201810172154322_PreprocessedDiagnostic.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
