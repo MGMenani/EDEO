@@ -60,6 +60,10 @@
                         <label>Confirm Password</label>
                         @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Password" })
                     </div>
+                    <div class="form-group">
+                        <label>Phone number</label>
+                        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", @placeholder = "Phone Number" })
+                    </div>
                     <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Register</button>
                     <div class="register-link m-t-15 text-center">
                         <p>Already have account ? @Html.ActionLink(" Sign in", "Login")</p>

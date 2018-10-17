@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Index of users</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Register", "Register","Account")
 </p>
 <table class="table">
     <tr>
@@ -51,7 +51,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Owner)
         </th>
-        <th></th>
+        <th>
+            Options
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -96,9 +98,13 @@
             @Html.DisplayFor(modelItem => item.Owner)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.Id })
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
         </td>
     </tr>
 }

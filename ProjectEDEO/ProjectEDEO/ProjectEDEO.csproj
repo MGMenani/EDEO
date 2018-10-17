@@ -298,6 +298,14 @@
     <Compile Include="Migrations\201810161455211_Status.Designer.cs">
       <DependentUpon>201810161455211_Status.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810170128032_phone.cs" />
+    <Compile Include="Migrations\201810170128032_phone.Designer.cs">
+      <DependentUpon>201810170128032_phone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810170142338_phone1.cs" />
+    <Compile Include="Migrations\201810170142338_phone1.Designer.cs">
+      <DependentUpon>201810170142338_phone1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\AccountViewModels.cs" />
     <Compile Include="Models\Account\IdentityModels.cs" />
@@ -807,6 +815,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810161455211_Status.resx">
       <DependentUpon>201810161455211_Status.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810170128032_phone.resx">
+      <DependentUpon>201810170128032_phone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810170142338_phone1.resx">
+      <DependentUpon>201810170142338_phone1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -4,26 +4,63 @@
     ViewBag.Title = "Share";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var id = ViewContext.RouteData.Values["id"];
-    
-
 }
 
-<h2>@ViewBag.Numero</h2>
-@using (Html.BeginForm("Share", "Diagnostics", id, FormMethod.Post, new { @class = "contact-form" }))
-{
-    @Html.AntiForgeryToken()
-    <div class="row">
-        <div class="col-md-2">
-           Tu correo: @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @type = "text", style = "width:1300px", Value = Html.Action("GetEmail") } })
-        
-           Correo a enviar: @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @type = "email", style = "width:1300px", @placeholder = "E-mail" } })
-        
-           Asunto: @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @type = "text", style = "width:1300px", Value = "Diagnositco" } })
-        
-           Diagnostico: @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @type = "text", style = "width:1300px", Value = @Html.Action("GetDiagnostic", new { id = id }) } })
+
+<div class="card">
+    @using (Html.BeginForm(new { @enctype = "multipart/form-data", @class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="card-header">
+            <strong>Create new</strong> medical record
+        </div>
+        <div class="card-body card-block">
+            <div class="row form-group">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Your name</label></div>
+                <div class="col-12 col-md-9">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @type = "text-input", Value = Html.Action("GetEmail") } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "form-text text-muted text-danger" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Email</label></div>
+                <div class="col-12 col-md-9">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @type = "email", @placeholder = "E-mail" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "form-text text-muted text-danger" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Asunto</label></div>
+                <div class="col-12 col-md-9">
+                    @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @type = "text-input", Value = "Diagnositco" } })
+                    @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "form-text text-muted text-danger" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Asunto</label></div>
+                <div class="col-12 col-md-9">
+                    @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @type = "text-input", Value = @Html.Action("GetDiagnostic", new { id = id }) } })
+                    @Html.ValidationMessageFor(model => model.Message, "", new { @class = "form-text text-muted text-danger" })
+                </div>
+            </div>
         </div>
         
-    </div>
-    <br />
-    <button class="site-btn light">Enviar</button>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary btn-sm">
+                <i class="fa fa-dot-circle-o"></i> Create
+            </button>
+            <button type="reset" class="btn btn-danger btn-sm">
+                <i class="fa fa-ban"></i> Reset
+            </button>
+        </div>
+    }
+</div>
+
+<div>
+    <a href=@Url.Action("Index", "MedicalRecords") class="btn btn-outline-secondary" type="button">Back to list</a>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 }
