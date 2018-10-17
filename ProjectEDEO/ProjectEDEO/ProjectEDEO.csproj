@@ -485,6 +485,7 @@
     <Content Include="images\profiles\profile_4.jpg" />
     <Content Include="images\review-bg.jpg" />
     <Content Include="images\team.jpg" />
+    <Content Include="Estimator\Preprocessing\Pre.py" />
     <Content Include="Scripts\app\_run.js" />
     <Content Include="Scripts\app\app.datamodel.js" />
     <Content Include="Scripts\app\app.viewmodel.js" />
