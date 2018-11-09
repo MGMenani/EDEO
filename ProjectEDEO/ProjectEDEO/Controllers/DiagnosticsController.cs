@@ -49,11 +49,15 @@ namespace Project_EDEO.Controllers
         // GET: Diagnostics/Create
         public ActionResult Create(int age, string image, string pre)
         {
-            ViewBag.Age = age;
-            ViewBag.Image = image;
-            ViewBag.Pre = pre;
+            Diagnostic diagnostic = new Diagnostic
+            {
+                ModelEstimatedAge = age,
+                Image = image,
+                Prosseced = pre,
+                Date = DateTime.Now
+            };
             ViewBag.MedicalRecordID = new SelectList(db.MedicalRecords, "MedicalRecordID", "Name");
-            return View();
+            return View(diagnostic);
         }
 
         // POST: Diagnostics/Create

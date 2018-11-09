@@ -52,7 +52,7 @@
             <div class="row form-group">
                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Medical record</label></div>
                 <div class="col-12 col-md-9">
-                    @Html.EditorFor(model => model.MedicalRecordID, new { htmlAttributes = new { @id = "text-input", @name = "text-input", @placeholder = "Medical record", @class = "form-control" } })
+                    @Html.DropDownListFor(model => model.MedicalRecordID, (SelectList)ViewBag.MedicalRecordID, "-- Select Medical Record --", new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.MedicalRecordID, "", new { @class = "form-text text-muted text-danger" })
                 </div>
             </div>

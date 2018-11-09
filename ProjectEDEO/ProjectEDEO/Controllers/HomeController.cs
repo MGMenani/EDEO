@@ -19,10 +19,6 @@ namespace Project_EDEO.Controllers
             // Check if the user is not logged in
             if (!User.Identity.IsAuthenticated)
             {
-                ViewBag.Age = 0;
-                ViewBag.Image = "";
-                ViewBag.Pre = "";
-
                 // Redirect to the About landing page
                 return RedirectToAction("Index", "About");
             }

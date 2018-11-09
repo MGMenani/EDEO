@@ -2,6 +2,12 @@
 
 @model Project_EDEO.Models.Home
 
+@{
+    var Age = ViewBag.Age;
+    var Image = ViewBag.Image;
+    var Pre = ViewBag.Pre;
+}
+
 @Styles.Render("~/Content/dropzone-css")
 
 <!-- Intro section end -->
@@ -41,7 +47,7 @@
                 <h3 class="sp-sub-title">Bone age estimation</h3>
                 <h1 id="age">0</h1>
                 <h3 class="sp-sub-title">months</h3>
-                <a href=@Url.Action("Create", "Diagnostics", new RouteValueDictionary(new { age = ViewBag.Age, image = ViewBag.Image, pre = ViewBag.Pre })) class="btn btn-outline-secondary" type="button">Associate</a>
+                <a href=@Url.Action("Create", "Diagnostics", new { age = 124, image = "~/images/uploads/45acb5ed-f6b0-4601-b3a2-2c583480399a.png", pre = "~/images/uploads/45acb5ed-f6b0-4601-b3a2-2c583480399a.png" }) class="btn btn-outline-secondary" type="button">Associate</a>
             </div>
         </div>
     </div>
